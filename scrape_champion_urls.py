@@ -2,17 +2,17 @@ import requests
 from BeautifulSoup import BeautifulSoup
 import pickle
 
-r = requests.get("http://loldb.gameguyz.com/champions")
+r = requests.get('http://loldb.gameguyz.com/champions')
 soup = BeautifulSoup(r.text)
 
-heroesList = soup.find('ul', "herosList")
-print heroesList
+heroesList = soup.find('ul', 'herosList')
 
-hero_urls = []
+heroUrls = {}
 for hero in heroesList.findAll('li'):
-    hero_urls.append(hero.find('a')['href'])
-print (hero_urls)
+    key = hero.find('span', 'heroName').text
+    val = hero.find('a')['href']
+    heroUrls[key] = val
 
-outfile = open("champion_urls.p", "wb")
-pickle.dump(hero_urls, outfile)
-outfile.close()
+outFile = open('data/champion_urls.p', 'wb')
+pickle.dump(heroUrls, outFile)
+outFile.close()

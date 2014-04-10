@@ -1,8 +1,3 @@
-// call this function when the user selects a champion
-var championSelected = function(name) {
-	window.updatePickRateViz(name);
-};
-
 // pick rate visualization module
 (function() {
 	var margin = {

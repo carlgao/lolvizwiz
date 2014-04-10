@@ -1,14 +1,15 @@
 # Grabs thumbnails and portrait URLs for each champion. 
-# Wukong is an exception for the portrait: his URL is http://ddragon.leagueoflegends.com/cdn/img/champion/splash/MonkeyKing_0.jpg which we have to manually correct in the output data file
+# Portrait URL exceptions which we had to manually correct in the output data file:
+# Dr. Mundo 
+# Fiddlesticks
+# Kog'Maw
+# LeBlanc
+# Wukong    
 
 import requests
 from BeautifulSoup import BeautifulSoup
 import pickle
 import json
-import re
-import tokenize
-import token
-import StringIO
 
 def getChampionData(name, championUrl):
     baseUrl = 'http://loldb.gameguyz.com'

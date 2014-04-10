@@ -20,6 +20,10 @@ with open('data/titles.p', 'rb') as titlesFile:
     for name in championTitles:
         outData[name] = getChampionData(name, championTitles[name])
     
+# sort by name, alphabetically
+outData = outData.values()
+outData.sort(key=lambda d: d['name'])
+    
 outFile = open('data/champs.json', 'wb')
 outFile.write(json.dumps(outData))
 outFile.close()

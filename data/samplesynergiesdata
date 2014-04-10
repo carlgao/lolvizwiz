@@ -1,0 +1,32 @@
+{
+	'Caitlyn': {
+		'matchups': {
+			'Urgot': 58.22,
+			'Vayne': 53.28,
+			'Trist': 52.04,
+			'Ezreal': 51.63,
+			'Varus': 51.27,
+			'Miss Fortune': 50.92,
+			'Jinx': 50.81,
+			'Draven': 50.51,
+			'Lucian': 50.27,
+			'Ashe': 50.06,
+		},
+		'synergies': {
+			'Teemo': 53.25,
+			'Sona': 53.19,
+			'Leona': 52.28,
+			'Blitzcrank': 52.25,
+			'Soraka': 51.99,
+			'Sivir': 58.55,
+			'Graves': 57.66,
+			'Corki': 56.95,
+			'Lucian': 56.19,
+			'Miss Fortune': 56.17
+		}
+	}, 
+	'Corki': {
+
+	},
+	'Vayne': {}
+}

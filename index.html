@@ -18,6 +18,15 @@
 	</head>
 	<body>
 		<div id="pick-div"></div>
+		<div id="ban-div"></div>
 		<script type="text/javascript" src="pick-viz.js"></script>
+		<script type="text/javascript" src="ban-viz.js"></script>
+		<script type="text/javascript">
+			// call this function when the user selects a champion
+			var championSelected = function(name) {
+				window.updatePickRateViz(name);
+				window.updateBanRateViz(name);
+			};
+		</script>
 	</body>
 </html>

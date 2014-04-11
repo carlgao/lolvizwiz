@@ -86,8 +86,8 @@ var drawSearch = function(champArray) {
 					'background-image': 'url(' + escape(champArray[j].portrait) + ')',
 					'background-repeat': 'no-repeat'
 				});
-				$('#name').innerHTML = champArray[j].name;
-				$('#title').innerHTML = champArray[j].title;
+				document.getElementById('name').innerHTML = champArray[j].name;
+				document.getElementById('title').innerHTML = champArray[j].title;
 			});
 		})();
 	}

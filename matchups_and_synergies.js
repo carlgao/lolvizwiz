@@ -9,239 +9,223 @@
 	width = 500 - margin.left - margin.right,
 	height = 500 - margin.top - margin.bottom;
 
-	var datatest = {
-				'matchups': {
-					'Urgot': 58.22,
-					'Vayne': 53.28,
-					'Trist': 52.04,
-					'Ezreal': 51.63,
-					'Varus': 51.27,
-					'Miss Fortune': 50.92,
-					'Jinx': 50.81,
-					'Draven': 50.51,
-					'Lucian': 50.27,
-					'Ashe': 50.06,
-				},
-				'synergies': {
-					'Teemo': 53.25,
-					'Sona': 53.19,
-					'Leona': 52.28,
-					'Blitzcrank': 52.25,
-					'Soraka': 51.99,
-					'Sivir': 58.55,
-					'Graves': 57.66,
-					'Corki': 56.95,
-					'Lucian': 56.19,
-					'Miss Fortune': 56.17
+	var dataSet = 
+{"Jax": [{"synergies": {"amumu": "55.88", "kassadin": "53.42", "heimerdinger": "56.19", "olaf": "51.74", "ziggs": "55.54", "rengar": "52.15", "swain": "55.44", "elise": "52.59", "wukong": "55.89", "gragas": "52.48"}, "matchups": {"rengar": "57.06", "olaf": "56.36", "cho-gath": "54.75", "shen": "54.75", "talon": "49.73", "malphite": "50.28", "kayle": "51.16", "dr-mundo": "54.55", "fiora": "49.79", "wukong": "52.40"}}], "Twisted Fate": [{"synergies": {"xin-zhao": "50.67", "kassadin": "60.94", "xerath": "58.69", "gragas": "59.15", "veigar": "60.48", "cassiopeia": "51.68", "kayle": "50.66", "leblanc": "58.39", "fiora": "51.52", "wukong": "52.15"}, "matchups": {"galio": "56.32", "heimerdinger": "55.99", "gragas": "53.09", "diana": "55.00", "lissandra": "51.09", "swain": "57.81", "sion": "50.64", "leblanc": "51.71", "veigar": "49.96", "katarina": "55.76"}}], "Shaco": [{"synergies": {"kassadin": "55.65", "heimerdinger": "54.08", "evelynn": "58.60", "ziggs": "53.18", "nocturne": "54.48", "talon": "54.03", "swain": "54.46", "skarner": "54.59", "elise": "56.93", "malzahar": "54.00"}, "matchups": {"xin-zhao": "52.35", "amumu": "51.55", "evelynn": "52.18", "nunu": "52.21", "sejuani": "50.95", "maokai": "52.38", "trundle": "51.98", "warwick": "51.94", "elise": "56.56", "volibear": "51.17"}}], "Warwick": [{"synergies": {"kassadin": "52.84", "heimerdinger": "57.37", "evelynn": "50.82", "ziggs": "57.64", "nocturne": "51.23", "swain": "57.22", "elise": "54.12", "fiora": "57.71", "wukong": "57.22", "gragas": "51.07"}, "matchups": {"lee-sin": "55.91", "amumu": "50.49", "evelynn": "55.25", "nocturne": "55.47", "rammus": "49.99", "warwick": "49.82", "hecarim": "55.30", "elise": "58.77", "xin-zhao": "48.97", "volibear": "48.60"}}], "Nidalee": [{"synergies": {"amumu": "53.31", "kassadin": "57.39", "gragas": "56.28", "twisted-fate": "55.60", "kayle": "53.23", "morgana": "53.35", "veigar": "54.90", "leblanc": "54.99", "fiora": "53.24", "wukong": "54.22"}, "matchups": {"kassadin": "53.77", "heimerdinger": "53.40", "xerath": "53.23", "gragas": "55.39", "karthus": "53.53", "katarina": "52.19", "swain": "52.59", "master-yi": "52.55", "leblanc": "53.13", "malzahar": "52.80"}}], "Zyra": [{"synergies": {"miss-fortune": "52.48", "lucian": "52.27", "nami": "52.74", "varus": "52.46", "quinn": "52.12", "zilean": "54.05", "leona": "53.09", "alistar": "54.94", "urgot": "58.45", "vayne": "53.28"}, "matchups": {"zyra": "50.40", "janna": "49.48", "sona": "52.87", "blitzcrank": "53.95", "zilean": "52.15", "lulu": "50.20", "soraka": "52.31", "thresh": "51.65", "leona": "53.25", "alistar": "55.32"}}], "Brand": [{"synergies": {"xin-zhao": "55.81", "kassadin": "54.46", "xerath": "53.90", "gragas": "55.25", "twisted-fate": "53.24", "syndra": "53.33", "talon": "56.77", "warwick": "56.02", "fiora": "56.61", "wukong": "57.41"}, "matchups": {"kassadin": "59.32", "galio": "51.14", "heimerdinger": "52.45", "gragas": "58.19", "viktor": "56.00", "twisted-fate": "56.09", "velkoz": "50.24", "sion": "56.26", "malzahar": "50.94", "ziggs": "51.59"}}], "Rammus": [{"synergies": {"heimerdinger": "56.37", "gragas": "53.42", "shen": "53.77", "swain": "56.50", "kayle": "56.71", "sion": "52.87", "hecarim": "53.40", "malzahar": "57.41", "fiora": "56.86", "shaco": "52.59"}, "matchups": {"amumu": "52.34", "sejuani": "49.67", "rammus": "49.45", "nocturne": "55.32", "nunu": "60.47", "shyvana": "49.57", "warwick": "49.77", "maokai": "54.06", "skarner": "54.27", "elise": "55.47"}}], "Corki": [{"synergies": {"sona": "53.70", "graves": "56.25", "vayne": "56.45", "sivir": "56.53", "nami": "54.45", "soraka": "53.15", "leona": "53.95", "caitlyn": "56.91", "jinx": "57.89", "teemo": "53.24"}, "matchups": {"tristana": "52.35", "miss-fortune": "51.38", "corki": "51.92", "jinx": "50.96", "kog-maw": "50.82", "vayne": "54.01", "caitlyn": "49.98", "urgot": "58.33", "varus": "51.69", "teemo": "52.78"}}], "Darius": [{"synergies": {"amumu": "54.94", "rengar": "54.12", "heimerdinger": "54.79", "gragas": "54.79", "vladimir": "55.86", "rammus": "54.06", "jayce": "54.34", "swain": "54.15", "elise": "54.76", "wukong": "54.87"}, "matchups": {"rengar": "54.94", "yorick": "51.39", "olaf": "53.80", "cho-gath": "53.54", "shen": "53.81", "talon": "52.07", "kayle": "53.05", "poppy": "53.59", "fiora": "51.71", "wukong": "53.45"}}], "Tryndamere": [{"synergies": {"amumu": "57.37", "kassadin": "53.48", "heimerdinger": "56.11", "olaf": "52.09", "nocturne": "52.03", "vladimir": "52.63", "shen": "52.24", "rammus": "55.94", "swain": "56.48", "wukong": "55.97"}, "matchups": {"rengar": "56.48", "olaf": "55.69", "jax": "50.32", "vladimir": "56.85", "shen": "56.16", "rumble": "55.79", "malphite": "50.17", "kayle": "51.25", "fiora": "51.93", "wukong": "50.28"}}], "Leona": [{"synergies": {"miss-fortune": "57.56", "nami": "53.60", "lulu": "54.96", "soraka": "58.55", "thresh": "54.39", "kog-maw": "55.00", "taric": "52.57", "alistar": "54.88", "urgot": "54.56", "teemo": "55.98"}, "matchups": {"zyra": "54.21", "janna": "49.19", "sona": "48.58", "blitzcrank": "53.37", "zilean": "53.58", "taric": "47.91", "karma": "53.15", "nami": "48.50", "leona": "49.56", "alistar": "57.17"}}], "Kha'Zix": [{"synergies": {"kassadin": "54.14", "heimerdinger": "55.89", "olaf": "53.73", "ziggs": "55.82", "nocturne": "53.28", "nunu": "53.50", "brand": "54.44", "swain": "54.61", "kayle": "54.97", "elise": "54.78"}, "matchups": {"rengar": "55.17", "olaf": "55.70", "vladimir": "54.42", "shen": "55.37", "talon": "52.83", "kayle": "52.31", "dr-mundo": "54.62", "fiora": "53.12", "wukong": "52.36", "tryndamere": "50.67"}}], "Yorick": [{"synergies": {"xin-zhao": "55.44", "kassadin": "56.75", "heimerdinger": "56.14", "ziggs": "55.25", "shen": "55.12", "brand": "55.83", "zac": "55.97", "dr-mundo": "55.95", "wukong": "55.62", "kennen": "57.34"}, "matchups": {"tryndamere": "51.85", "yorick": "51.82", "olaf": "54.42", "shen": "55.75", "jayce": "55.38", "rumble": "56.07", "kayle": "52.54", "aatrox": "53.08", "wukong": "53.91", "kennen": "55.12"}}], "Xerath": [{"synergies": {"amumu": "53.77", "xin-zhao": "52.85", "gragas": "57.09", "kassadin": "57.41", "fiora": "54.27", "cassiopeia": "53.42", "twisted-fate": "57.29", "malzahar": "59.56", "lissandra": "60.43", "wukong": "53.13"}, "matchups": {"kassadin": "53.72", "heimerdinger": "52.66", "gragas": "54.06", "viktor": "54.17", "morgana": "52.56", "leblanc": "53.48", "nidalee": "52.53", "veigar": "53.17", "malzahar": "52.73", "fizz": "52.65"}}], "Sivir": [{"synergies": {"sona": "53.50", "graves": "58.76", "blitzcrank": "53.37", "soraka": "53.22", "lucian": "58.03", "draven": "57.66", "leona": "53.67", "caitlyn": "57.59", "jinx": "57.70", "teemo": "52.90"}, "matchups": {"tristana": "52.25", "miss-fortune": "51.31", "twitch": "50.12", "ashe": "50.45", "ezreal": "53.19", "draven": "51.31", "vayne": "53.34", "caitlyn": "51.70", "urgot": "59.63", "teemo": "51.53"}}], "Riven": [{"synergies": {"amumu": "52.31", "kassadin": "56.40", "heimerdinger": "52.24", "olaf": "57.85", "ziggs": "52.10", "shen": "56.04", "anivia": "56.15", "swain": "52.43", "lissandra": "56.36", "wukong": "52.43"}, "matchups": {"rengar": "52.69", "vladimir": "53.16", "cho-gath": "51.19", "talon": "54.50", "rumble": "51.51", "kayle": "54.82", "dr-mundo": "52.84", "fiora": "57.15", "wukong": "55.32", "tryndamere": "54.09"}}], "Orianna": [{"synergies": {"xin-zhao": "52.37", "kassadin": "59.49", "gragas": "58.22", "karthus": "56.62", "ahri": "57.44", "kayle": "52.13", "warwick": "52.89", "leblanc": "56.46", "fiora": "55.28", "wukong": "53.76"}, "matchups": {"kassadin": "54.61", "mordekaiser": "54.06", "gragas": "54.48", "galio": "52.25", "morgana": "52.50", "master-yi": "54.00", "leblanc": "54.08", "nidalee": "52.23", "lissandra": "53.42", "ziggs": "55.10"}}], "Gangplank": [{"synergies": {"amumu": "54.64", "kassadin": "57.64", "heimerdinger": "54.56", "olaf": "55.99", "gragas": "56.24", "shen": "55.74", "swain": "54.63", "warwick": "53.70", "elise": "56.22", "wukong": "53.06"}, "matchups": {"cho-gath": "55.88", "olaf": "53.38", "jax": "53.41", "vladimir": "51.88", "rengar": "51.84", "shen": "52.15", "talon": "52.99", "irelia": "52.89", "fiora": "57.04", "wukong": "55.63"}}], "Malphite": [{"synergies": {"kassadin": "53.79", "gragas": "54.72", "rumble": "53.24", "shen": "53.28", "talon": "54.94", "swain": "55.20", "kayle": "54.43", "elise": "53.75", "fiora": "56.21", "wukong": "55.28"}, "matchups": {"rengar": "54.17", "olaf": "55.34", "jayce": "54.12", "talon": "50.34", "kayle": "51.15", "aatrox": "49.91", "poppy": "54.28", "dr-mundo": "53.53", "fiora": "50.37", "wukong": "52.66"}}], "Miss Fortune": [{"synergies": {"sona": "57.32", "sivir": "55.88", "blitzcrank": "55.81", "nami": "55.69", "corki": "55.07", "taric": "55.75", "leona": "57.61", "ezreal": "53.88", "vayne": "54.42", "caitlyn": "56.54"}, "matchups": {"tristana": "55.40", "miss-fortune": "49.65", "teemo": "49.21", "ashe": "47.86", "kog-maw": "50.40", "vayne": "56.93", "twitch": "54.31", "urgot": "59.62", "jinx": "47.43", "ezreal": "54.67"}}], "Poppy": [{"synergies": {"kassadin": "58.49", "heimerdinger": "53.18", "olaf": "57.75", "ziggs": "52.99", "twisted-fate": "56.67", "talon": "53.64", "kayle": "53.42", "elise": "55.74", "wukong": "53.66", "gragas": "55.90"}, "matchups": {"cho-gath": "52.96", "olaf": "51.88", "irelia": "53.26", "rengar": "52.56", "shen": "53.06", "zac": "52.77", "talon": "53.43", "kayle": "54.83", "fiora": "55.11", "tryndamere": "52.90"}}], "Lee Sin": [{"synergies": {"kassadin": "56.45", "heimerdinger": "52.84", "olaf": "55.78", "ziggs": "52.01", "nunu": "55.15", "talon": "52.24", "kayle": "52.87", "elise": "56.77", "fiora": "52.85", "gragas": "54.87"}, "matchups": {"lee-sin": "50.43", "amumu": "54.38", "rammus": "53.42", "nocturne": "50.76", "fiddlesticks": "53.05", "nunu": "52.60", "warwick": "54.16", "skarner": "50.87", "elise": "53.38", "xin-zhao": "53.19"}}], "Karthus": [{"synergies": {"kassadin": "61.72", "galio": "54.14", "gragas": "60.11", "orianna": "56.21", "rammus": "54.20", "syndra": "57.09", "tryndamere": "53.11", "leblanc": "57.18", "wukong": "53.86", "kayle": "53.59"}, "matchups": {"kassadin": "55.16", "galio": "54.13", "heimerdinger": "53.38", "ziggs": "53.57", "twisted-fate": "54.85", "cassiopeia": "55.22", "morgana": "52.35", "lissandra": "53.63", "katarina": "52.18", "nidalee": "52.71"}}], "Jayce": [{"synergies": {"amumu": "53.84", "kassadin": "57.69", "yorick": "54.82", "olaf": "55.18", "ziggs": "52.74", "rengar": "55.30", "swain": "53.09", "fiora": "52.80", "wukong": "52.67", "gragas": "56.69"}, "matchups": {"cho-gath": "53.60", "yorick": "53.69", "olaf": "53.51", "vladimir": "53.53", "riven": "52.13", "darius": "52.61", "talon": "53.15", "tryndamere": "53.49", "fiora": "54.78", "wukong": "55.08"}}], "Blitzcrank": [{"synergies": {"miss-fortune": "55.72", "janna": "54.28", "nami": "54.43", "lulu": "54.16", "soraka": "54.40", "thresh": "57.26", "draven": "54.09", "alistar": "57.53", "urgot": "54.28", "teemo": "55.54"}, "matchups": {"zyra": "54.74", "janna": "52.65", "blitzcrank": "49.60", "zilean": "53.56", "lulu": "48.97", "taric": "50.64", "karma": "54.26", "nami": "48.53", "leona": "51.84", "alistar": "54.72"}}], "Trundle": [{"synergies": {"amumu": "53.79", "kassadin": "55.13", "olaf": "55.30", "ziggs": "53.24", "dr-mundo": "55.67", "gangplank": "54.67", "kayle": "53.31", "malzahar": "53.55", "wukong": "54.42", "gragas": "55.37"}, "matchups": {"amumu": "53.37", "fiddlesticks": "52.73", "nunu": "53.37", "warwick": "52.05", "maokai": "51.99", "shaco": "51.62", "skarner": "52.77", "hecarim": "52.09", "elise": "55.17", "xin-zhao": "51.96"}}], "Graves": [{"synergies": {"tristana": "56.18", "sona": "54.05", "sivir": "58.84", "blitzcrank": "53.25", "corki": "57.33", "taric": "52.85", "draven": "57.42", "leona": "53.33", "caitlyn": "58.35", "teemo": "53.54"}, "matchups": {"tristana": "51.95", "miss-fortune": "52.48", "teemo": "50.29", "draven": "50.31", "kog-maw": "50.75", "vayne": "54.36", "twitch": "51.56", "urgot": "57.57", "jinx": "50.02", "ezreal": "52.30"}}], "Lucian": [{"synergies": {"sona": "53.43", "graves": "56.24", "sivir": "57.05", "blitzcrank": "53.82", "soraka": "53.14", "leona": "53.95", "caitlyn": "55.37", "urgot": "55.56", "vayne": "55.08", "teemo": "53.77"}, "matchups": {"tristana": "52.83", "miss-fortune": "52.24", "jinx": "50.21", "draven": "49.94", "kog-maw": "50.07", "vayne": "54.98", "teemo": "50.03", "urgot": "59.57", "varus": "52.79", "ezreal": "52.85"}}], "Nocturne": [{"synergies": {"kassadin": "57.23", "olaf": "55.65", "heimerdinger": "51.95", "evelynn": "57.14", "ziggs": "51.87", "brand": "51.96", "swain": "52.38", "skarner": "56.91", "wukong": "51.64", "gragas": "57.02"}, "matchups": {"amumu": "54.82", "lee-sin": "50.47", "nautilus": "50.55", "nocturne": "50.63", "nunu": "51.30", "rammus": "53.84", "warwick": "54.52", "elise": "54.60", "xin-zhao": "54.37", "volibear": "54.21"}}], "Lux": [{"synergies": {"amumu": "55.00", "kassadin": "55.43", "heimerdinger": "54.25", "gragas": "55.77", "twisted-fate": "54.21", "syndra": "53.57", "warwick": "55.10", "leblanc": "53.95", "fiora": "55.71", "wukong": "55.22"}, "matchups": {"kassadin": "58.08", "galio": "50.37", "heimerdinger": "50.75", "gragas": "55.73", "twisted-fate": "54.05", "morgana": "49.94", "master-yi": "50.59", "leblanc": "55.76", "veigar": "54.65", "ziggs": "51.47"}}], "Shyvana": [{"synergies": {"rengar": "54.57", "heimerdinger": "53.53", "gragas": "56.07", "nunu": "54.78", "veigar": "54.36", "kayle": "53.63", "elise": "55.92", "malzahar": "53.49", "fiora": "53.81", "wukong": "54.00"}, "matchups": {"amumu": "52.57", "fiddlesticks": "52.11", "nocturne": "51.91", "vi": "50.38", "skarner": "52.15", "maokai": "52.74", "warwick": "52.74", "hecarim": "51.85", "elise": "54.50", "xin-zhao": "51.85"}}], "Renekton": [{"synergies": {"amumu": "52.87", "cho-gath": "56.31", "garen": "57.48", "shen": "58.39", "brand": "52.52", "rumble": "56.52", "singed": "56.65", "kayle": "54.02", "warwick": "52.78", "wukong": "53.03"}, "matchups": {"rengar": "53.69", "cho-gath": "52.28", "olaf": "53.75", "riven": "52.25", "talon": "53.19", "kayle": "54.87", "poppy": "51.73", "fiora": "52.61", "wukong": "53.55", "tryndamere": "52.35"}}], "Fiora": [{"synergies": {"amumu": "59.63", "kassadin": "50.67", "heimerdinger": "58.22", "olaf": "50.78", "ziggs": "58.68", "zed": "50.31", "rengar": "50.62", "riven": "50.13", "malzahar": "58.03", "wukong": "58.21"}, "matchups": {"rengar": "58.82", "olaf": "58.19", "jax": "48.72", "riven": "58.24", "gangplank": "58.05", "rumble": "58.76", "malphite": "48.18", "kayle": "48.69", "fiora": "49.38", "wukong": "49.02"}}], "Jinx": [{"synergies": {"sona": "54.81", "varus": "54.96", "sivir": "58.20", "blitzcrank": "54.11", "nami": "54.30", "corki": "55.61", "taric": "54.17", "leona": "54.64", "urgot": "56.77", "vayne": "56.05"}, "matchups": {"tristana": "52.59", "miss-fortune": "51.23", "graves": "48.84", "jinx": "49.45", "kog-maw": "49.09", "vayne": "55.02", "teemo": "49.99", "urgot": "58.50", "varus": "52.31", "ezreal": "53.30"}}], "Fizz": [{"synergies": {"amumu": "54.86", "kassadin": "56.98", "heimerdinger": "53.48", "gragas": "56.45", "veigar": "55.29", "tryndamere": "53.24", "elise": "55.13", "leblanc": "54.81", "fiora": "54.42", "wukong": "54.65"}, "matchups": {"kassadin": "56.26", "galio": "52.32", "heimerdinger": "54.13", "gragas": "55.36", "twisted-fate": "54.78", "swain": "53.17", "leblanc": "54.36", "veigar": "55.16", "malzahar": "51.94", "ziggs": "52.36"}}], "Kassadin": [{"synergies": {"amumu": "48.21", "fiora": "48.56", "rammus": "49.05", "cassiopeia": "52.33", "anivia": "61.38", "swain": "62.04", "karthus": "61.24", "leblanc": "61.59", "veigar": "62.26", "wukong": "48.72"}, "matchups": {"kassadin": "50.36", "galio": "59.25", "heimerdinger": "58.93", "xerath": "48.43", "gragas": "50.23", "twisted-fate": "51.42", "swain": "62.09", "malzahar": "59.43", "veigar": "49.49", "ziggs": "58.51"}}], "Sona": [{"synergies": {"miss-fortune": "56.59", "zilean": "58.33", "soraka": "55.33", "taric": "55.61", "nami": "56.97", "kog-maw": "54.80", "thresh": "53.31", "alistar": "53.72", "urgot": "56.27", "jinx": "54.63"}, "matchups": {"zyra": "54.07", "sona": "49.50", "blitzcrank": "50.71", "zilean": "53.88", "lulu": "53.56", "soraka": "48.00", "karma": "55.89", "nami": "48.45", "leona": "50.13", "alistar": "57.66"}}], "Vladimir": [{"synergies": {"kassadin": "58.44", "gragas": "57.87", "shen": "57.30", "zac": "58.11", "talon": "53.01", "warwick": "51.19", "master-yi": "50.90", "elise": "58.78", "malzahar": "51.84", "wukong": "51.88"}, "matchups": {"cho-gath": "52.78", "olaf": "53.55", "rengar": "51.37", "shen": "52.31", "zac": "51.47", "talon": "55.52", "tryndamere": "56.27", "fiora": "55.94", "wukong": "55.13", "kayle": "56.19"}}], "Viktor": [{"synergies": {"amumu": "53.51", "kassadin": "57.95", "xerath": "58.22", "irelia": "54.03", "syndra": "59.76", "swain": "60.31", "warwick": "54.12", "leblanc": "55.86", "fiora": "54.94", "wukong": "55.30"}, "matchups": {"kassadin": "54.79", "heimerdinger": "53.36", "ryze": "53.22", "gragas": "55.59", "twisted-fate": "54.37", "brand": "53.74", "anivia": "53.81", "swain": "54.58", "master-yi": "54.52", "ziggs": "54.22"}}], "Cassiopeia": [{"synergies": {"galio": "62.79", "ziggs": "53.68", "nunu": "55.56", "karthus": "57.46", "anivia": "57.33", "lissandra": "55.94", "malzahar": "57.34", "fiora": "54.29", "wukong": "55.14", "gragas": "57.40"}, "matchups": {"kassadin": "59.20", "heimerdinger": "52.96", "gragas": "54.52", "viktor": "54.74", "karthus": "56.64", "brand": "55.85", "lissandra": "54.52", "malzahar": "53.72", "veigar": "53.77", "ziggs": "54.77"}}], "Maokai": [{"synergies": {"kassadin": "58.77", "galio": "52.06", "gragas": "58.03", "nunu": "59.11", "twisted-fate": "56.81", "talon": "52.71", "master-yi": "51.85", "elise": "58.54", "fiora": "55.13", "wukong": "53.37"}, "matchups": {"amumu": "55.97", "lee-sin": "50.68", "nautilus": "53.14", "nocturne": "49.88", "nunu": "52.77", "rammus": "53.34", "trundle": "49.70", "warwick": "55.44", "elise": "53.29", "xin-zhao": "55.30"}}], "Thresh": [{"synergies": {"miss-fortune": "54.23", "janna": "55.83", "blitzcrank": "57.68", "nami": "56.07", "lulu": "52.24", "soraka": "55.78", "draven": "52.12", "alistar": "58.26", "urgot": "56.85", "teemo": "52.54"}, "matchups": {"sona": "51.96", "janna": "49.75", "zilean": "51.16", "lulu": "50.48", "soraka": "51.01", "thresh": "50.25", "karma": "50.95", "taric": "50.79", "leona": "51.46", "alistar": "54.97"}}], "Kayle": [{"synergies": {"amumu": "58.73", "xin-zhao": "57.02", "heimerdinger": "57.31", "gragas": "51.39", "kassadin": "53.60", "veigar": "51.45", "lissandra": "50.60", "leblanc": "51.54", "fiora": "58.13", "wukong": "59.15"}, "matchups": {"rengar": "58.96", "olaf": "58.96", "cho-gath": "57.64", "shen": "58.41", "kayle": "50.26", "aatrox": "47.55", "dr-mundo": "56.84", "fiora": "49.96", "wukong": "49.10", "tryndamere": "47.37"}}], "Hecarim": [{"synergies": {"heimerdinger": "52.95", "gragas": "55.77", "udyr": "56.09", "maokai": "55.41", "talon": "52.76", "swain": "52.79", "kayle": "53.65", "elise": "56.23", "skarner": "57.66", "fiora": "54.05"}, "matchups": {"amumu": "53.63", "xin-zhao": "52.29", "nautilus": "51.63", "nocturne": "51.91", "skarner": "51.41", "fiddlesticks": "52.16", "nunu": "53.70", "maokai": "52.15", "warwick": "53.97", "elise": "54.27"}}], "Vel'Koz": [{"synergies": {"xin-zhao": "53.94", "kassadin": "57.49", "gragas": "55.29", "twisted-fate": "55.32", "zac": "53.99", "anivia": "56.46", "talon": "53.54", "warwick": "53.71", "fiora": "54.59", "wukong": "54.80"}, "matchups": {"kassadin": "54.98", "heimerdinger": "52.42", "ziggs": "53.81", "twisted-fate": "55.10", "sion": "54.36", "master-yi": "52.77", "leblanc": "54.57", "fizz": "51.29", "nidalee": "51.18", "gragas": "54.70"}}], "Olaf": [{"synergies": {"amumu": "50.67", "kassadin": "60.34", "heimerdinger": "50.79", "gragas": "58.46", "vladimir": "58.42", "rammus": "50.13", "kayle": "50.36", "poppy": "58.10", "elise": "58.11", "wukong": "49.85"}, "matchups": {"rengar": "50.33", "olaf": "50.02", "riven": "49.81", "shen": "49.51", "kha-zix": "54.91", "talon": "55.44", "kayle": "57.58", "poppy": "50.53", "fiora": "57.35", "wukong": "57.16"}}], "Ziggs": [{"synergies": {"xin-zhao": "56.43", "amumu": "56.18", "gragas": "55.95", "kassadin": "55.22", "karthus": "54.84", "anivia": "54.95", "twisted-fate": "54.07", "warwick": "57.24", "fiora": "57.89", "wukong": "57.15"}, "matchups": {"kassadin": "59.51", "galio": "48.34", "gragas": "58.38", "lissandra": "57.50", "master-yi": "50.76", "akali": "49.08", "leblanc": "56.70", "ziggs": "49.16", "veigar": "57.07", "nidalee": "49.60"}}], "Syndra": [{"synergies": {"kassadin": "57.98", "heimerdinger": "52.99", "gragas": "57.90", "viktor": "58.08", "karthus": "57.85", "anivia": "59.30", "tryndamere": "52.84", "master-yi": "53.30", "fiora": "55.42", "wukong": "53.36"}, "matchups": {"kassadin": "55.61", "galio": "53.87", "gragas": "54.52", "twisted-fate": "52.68", "brand": "53.59", "master-yi": "52.90", "leblanc": "53.62", "lissandra": "53.32", "malzahar": "53.75", "ziggs": "54.16"}}], "Karma": [{"synergies": {"miss-fortune": "51.69", "sona": "52.28", "vayne": "53.52", "soraka": "53.67", "thresh": "51.75", "leona": "52.46", "alistar": "56.12", "urgot": "56.13", "jinx": "51.42", "ezreal": "51.58"}, "matchups": {"zyra": "51.82", "sona": "54.51", "janna": "52.32", "blitzcrank": "53.30", "zilean": "51.26", "thresh": "49.67", "karma": "50.27", "nami": "52.06", "leona": "52.56", "alistar": "54.73"}}], "Annie": [{"synergies": {"amumu": "53.61", "kassadin": "55.50", "heimerdinger": "53.69", "gragas": "55.80", "rengar": "53.83", "kayle": "53.46", "elise": "55.46", "leblanc": "54.72", "fiora": "54.93", "wukong": "54.00"}, "matchups": {"kassadin": "55.62", "galio": "53.97", "heimerdinger": "54.00", "gragas": "54.29", "lissandra": "53.51", "swain": "53.24", "leblanc": "53.49", "veigar": "53.43", "malzahar": "54.25", "ziggs": "54.32"}}], "Akali": [{"synergies": {"amumu": "55.62", "kassadin": "55.21", "ziggs": "55.39", "rengar": "52.83", "twisted-fate": "53.55", "swain": "55.27", "elise": "53.55", "malzahar": "55.89", "lissandra": "52.85", "wukong": "56.22"}, "matchups": {"kassadin": "56.66", "mordekaiser": "50.88", "heimerdinger": "53.38", "gragas": "55.71", "zed": "55.34", "galio": "50.43", "twisted-fate": "55.63", "swain": "50.99", "veigar": "55.12", "katarina": "51.55"}}], "Volibear": [{"synergies": {"amumu": "56.65", "xin-zhao": "55.52", "heimerdinger": "57.06", "gragas": "53.14", "rengar": "52.18", "kassadin": "54.37", "twisted-fate": "52.45", "brand": "55.49", "elise": "52.67", "wukong": "55.92"}, "matchups": {"amumu": "51.91", "xin-zhao": "50.17", "nautilus": "54.58", "evelynn": "53.79", "nocturne": "54.96", "fiddlesticks": "49.68", "nunu": "54.25", "warwick": "50.15", "elise": "56.63", "volibear": "49.56"}}], "Yasuo": [{"synergies": {"amumu": "53.83", "rengar": "55.42", "heimerdinger": "53.59", "olaf": "53.94", "zed": "53.91", "twisted-fate": "54.69", "rammus": "53.49", "kayle": "53.32", "elise": "55.28", "wukong": "55.17"}, "matchups": {"kassadin": "56.12", "heimerdinger": "52.98", "gragas": "55.76", "twisted-fate": "54.19", "katarina": "52.86", "swain": "57.28", "morgana": "52.76", "sion": "52.91", "leblanc": "53.51", "malzahar": "53.81"}}], "Kennen": [{"synergies": {"kassadin": "55.58", "galio": "54.31", "gragas": "56.60", "vladimir": "55.39", "cho-gath": "55.22", "sejuani": "54.77", "talon": "55.76", "swain": "54.47", "dr-mundo": "55.23", "wukong": "54.84"}, "matchups": {"cho-gath": "55.27", "yorick": "53.88", "olaf": "55.34", "vladimir": "52.84", "riven": "53.05", "rengar": "54.44", "singed": "52.31", "kayle": "52.95", "fiora": "54.21", "wukong": "52.94"}}], "Rengar": [{"synergies": {"amumu": "49.86", "kassadin": "59.79", "heimerdinger": "50.53", "ziggs": "49.99", "twisted-fate": "56.72", "brand": "51.09", "maokai": "56.99", "swain": "50.57", "elise": "58.84", "gragas": "57.40"}, "matchups": {"rengar": "49.91", "olaf": "50.98", "jax": "55.97", "shen": "50.27", "rumble": "49.51", "kayle": "57.20", "aatrox": "55.56", "dr-mundo": "50.37", "fiora": "57.79", "wukong": "57.33"}}], "Ryze": [{"synergies": {"amumu": "52.68", "kassadin": "56.13", "ziggs": "52.75", "vladimir": "54.89", "cho-gath": "55.33", "shen": "54.88", "talon": "54.90", "kayle": "52.34", "elise": "54.76", "wukong": "54.34"}, "matchups": {"kassadin": "54.29", "galio": "53.47", "heimerdinger": "54.85", "gragas": "54.76", "zed": "53.24", "twisted-fate": "53.04", "brand": "54.47", "swain": "53.43", "leblanc": "53.02", "malzahar": "54.06"}}], "Shen": [{"synergies": {"kassadin": "58.49", "vladimir": "57.67", "dr-mundo": "58.31", "talon": "50.68", "swain": "50.68", "kayle": "50.74", "renekton": "58.65", "elise": "58.00", "malzahar": "50.70", "wukong": "52.49"}, "matchups": {"rengar": "50.70", "yorick": "55.01", "olaf": "50.95", "garen": "50.66", "cho-gath": "49.77", "shen": "49.98", "singed": "54.91", "kayle": "57.72", "fiora": "54.67", "wukong": "56.55"}}], "Teemo": [{"synergies": {"miss-fortune": "54.49", "sona": "54.29", "blitzcrank": "55.58", "zilean": "48.85", "taric": "54.92", "leona": "55.97", "alistar": "51.55", "urgot": "53.12", "vayne": "49.82", "zyra": "49.37"}, "matchups": {"tristana": "53.73", "miss-fortune": "49.64", "caitlyn": "48.18", "jinx": "48.45", "lucian": "48.37", "vayne": "55.83", "teemo": "49.58", "urgot": "60.41", "varus": "53.55", "ezreal": "54.05"}}], "Dr. Mundo": [{"synergies": {"amumu": "51.90", "cho-gath": "57.61", "gragas": "56.73", "shen": "56.80", "brand": "51.82", "elise": "58.75", "malzahar": "51.75", "fiora": "52.23", "wukong": "52.47", "kassadin": "56.75"}, "matchups": {"cho-gath": "52.81", "olaf": "53.07", "vladimir": "51.40", "shen": "51.24", "kha-zix": "53.16", "talon": "53.66", "kayle": "55.45", "fiora": "56.82", "wukong": "55.78", "kennen": "51.61"}}], "Pantheon": [{"synergies": {"amumu": "54.82", "kassadin": "55.77", "heimerdinger": "54.60", "olaf": "54.67", "gragas": "54.26", "rengar": "53.81", "nunu": "54.26", "rammus": "53.54", "kayle": "54.21", "wukong": "54.53"}, "matchups": {"rengar": "55.11", "yorick": "51.52", "olaf": "53.93", "vladimir": "53.02", "riven": "52.76", "gangplank": "52.61", "talon": "52.22", "kayle": "53.59", "wukong": "53.75", "tryndamere": "50.97"}}], "Swain": [{"synergies": {"kassadin": "62.01", "heimerdinger": "56.34", "gragas": "55.04", "viktor": "59.34", "veigar": "54.41", "cassiopeia": "54.59", "tryndamere": "56.62", "warwick": "56.91", "fiora": "55.99", "wukong": "57.36"}, "matchups": {"kassadin": "61.17", "heimerdinger": "52.41", "yasuo": "57.56", "twisted-fate": "58.71", "brand": "50.77", "cassiopeia": "50.04", "lissandra": "58.59", "malzahar": "50.27", "veigar": "57.35", "ziggs": "52.29"}}], "Sion": [{"synergies": {"amumu": "52.62", "kassadin": "57.58", "gragas": "58.67", "vladimir": "58.22", "rengar": "56.67", "twisted-fate": "56.46", "brand": "52.87", "cassiopeia": "52.01", "fiora": "53.05", "wukong": "53.22"}, "matchups": {"kassadin": "55.57", "heimerdinger": "56.41", "gragas": "52.14", "zed": "51.67", "veigar": "53.63", "brand": "55.03", "swain": "54.11", "morgana": "53.79", "malzahar": "55.00", "lissandra": "53.49"}}], "Vayne": [{"synergies": {"tristana": "56.55", "janna": "50.13", "sivir": "57.33", "blitzcrank": "49.99", "nami": "49.64", "kog-maw": "49.62", "varus": "57.01", "ezreal": "58.05", "urgot": "59.08", "teemo": "50.39"}, "matchups": {"miss-fortune": "55.35", "twitch": "53.79", "sivir": "48.37", "jinx": "53.62", "lucian": "53.97", "vayne": "50.73", "teemo": "54.14", "urgot": "54.72", "varus": "48.51", "ezreal": "49.48"}}], "Nasus": [{"synergies": {"amumu": "54.96", "irelia": "53.94", "gragas": "53.94", "vladimir": "55.51", "shen": "54.14", "brand": "54.37", "kayle": "54.65", "renekton": "54.32", "warwick": "54.72", "wukong": "55.33"}, "matchups": {"rengar": "54.65", "olaf": "53.48", "cho-gath": "53.69", "shen": "53.61", "zac": "53.84", "talon": "51.79", "kayle": "52.02", "aatrox": "50.34", "fiora": "52.83", "wukong": "51.83"}}], "Fiddlesticks": [{"synergies": {"kassadin": "53.09", "gragas": "51.82", "talon": "57.67", "kayle": "56.31", "morgana": "55.12", "skarner": "52.41", "elise": "52.50", "leblanc": "52.02", "fiora": "55.97", "wukong": "55.66"}, "matchups": {"xin-zhao": "50.01", "fiddlesticks": "49.72", "evelynn": "55.99", "skarner": "54.49", "nunu": "55.94", "sejuani": "49.29", "maokai": "54.63", "warwick": "50.05", "elise": "56.21", "amumu": "49.19"}}], "Udyr": [{"synergies": {"kassadin": "55.50", "heimerdinger": "54.21", "evelynn": "56.80", "kayle": "53.99", "skarner": "56.43", "hecarim": "56.07", "elise": "57.04", "malzahar": "53.79", "fiora": "54.08", "wukong": "54.35"}, "matchups": {"lee-sin": "51.96", "amumu": "55.28", "nocturne": "51.86", "rammus": "52.43", "maokai": "52.40", "warwick": "52.47", "hecarim": "52.69", "elise": "55.58", "xin-zhao": "52.45", "volibear": "52.03"}}], "Morgana": [{"synergies": {"kassadin": "53.98", "heimerdinger": "56.40", "gragas": "53.74", "veigar": "51.80", "kayle": "57.48", "warwick": "56.25", "elise": "52.96", "leblanc": "51.33", "fiora": "56.81", "wukong": "56.27"}, "matchups": {"kassadin": "58.02", "heimerdinger": "52.14", "gragas": "58.81", "zed": "55.56", "morgana": "49.81", "master-yi": "50.25", "leblanc": "57.20", "veigar": "56.51", "katarina": "50.39", "ziggs": "51.70"}}], "LeBlanc": [{"synergies": {"amumu": "49.53", "kassadin": "59.71", "heimerdinger": "50.44", "olaf": "57.66", "gragas": "59.66", "twisted-fate": "57.91", "tryndamere": "49.55", "elise": "58.04", "fiora": "52.04", "wukong": "51.25"}, "matchups": {"kassadin": "51.73", "galio": "55.60", "heimerdinger": "57.04", "gragas": "51.48", "twisted-fate": "49.63", "morgana": "55.91", "leblanc": "50.60", "lissandra": "49.93", "malzahar": "57.43", "ziggs": "55.92"}}], "Caitlyn": [{"synergies": {"miss-fortune": "55.85", "sona": "53.09", "graves": "56.55", "sivir": "58.62", "blitzcrank": "52.37", "corki": "56.42", "soraka": "52.24", "leona": "52.13", "urgot": "56.48", "teemo": "53.40"}, "matchups": {"tristana": "51.94", "miss-fortune": "51.51", "jinx": "50.75", "lucian": "49.99", "draven": "50.50", "vayne": "53.22", "teemo": "50.00", "urgot": "58.53", "varus": "51.24", "ezreal": "51.61"}}], "Sejuani": [{"synergies": {"cho-gath": "55.10", "heimerdinger": "55.38", "gragas": "55.87", "maokai": "55.11", "talon": "56.60", "nautilus": "54.55", "tryndamere": "56.00", "hecarim": "55.73", "fiora": "56.84", "wukong": "57.14"}, "matchups": {"lee-sin": "53.68", "amumu": "54.03", "rammus": "49.96", "nunu": "56.75", "warwick": "50.71", "maokai": "54.26", "elise": "54.53", "skarner": "56.57", "xin-zhao": "50.70", "jarvan-iv": "49.37"}}], "Zilean": [{"synergies": {"zyra": "55.04", "sona": "57.26", "soraka": "53.69", "taric": "54.72", "karma": "53.69", "quinn": "52.43", "leona": "54.27", "alistar": "53.66", "urgot": "56.86", "jinx": "52.10"}, "matchups": {"zyra": "51.87", "sona": "53.46", "blitzcrank": "52.15", "zilean": "50.72", "lulu": "51.11", "soraka": "51.35", "thresh": "51.60", "nami": "51.46", "leona": "51.27", "alistar": "55.85"}}], "Rumble": [{"synergies": {"amumu": "52.65", "xin-zhao": "52.52", "gragas": "59.99", "cho-gath": "58.56", "kassadin": "58.67", "shen": "57.90", "talon": "54.23", "elise": "57.51", "fiora": "53.36", "wukong": "53.52"}, "matchups": {"yorick": "55.05", "olaf": "52.28", "vladimir": "52.18", "shen": "52.99", "talon": "55.09", "renekton": "51.55", "aatrox": "55.17", "poppy": "52.35", "fiora": "58.23", "wukong": "55.28"}}], "Skarner": [{"synergies": {"heimerdinger": "53.03", "evelynn": "57.55", "gragas": "56.46", "nocturne": "56.69", "talon": "52.11", "kayle": "52.63", "hecarim": "56.53", "elise": "56.37", "malzahar": "53.13", "fiora": "52.70"}, "matchups": {"amumu": "55.39", "sejuani": "54.27", "evelynn": "51.77", "nocturne": "50.79", "nunu": "50.80", "rammus": "54.96", "maokai": "50.21", "warwick": "54.64", "elise": "54.24", "volibear": "53.72"}}], "Cho'Gath": [{"synergies": {"xin-zhao": "51.81", "amumu": "51.51", "gragas": "58.89", "irelia": "57.55", "kassadin": "58.89", "shen": "57.40", "rumble": "58.10", "warwick": "51.88", "fiora": "52.09", "wukong": "52.73"}, "matchups": {"rengar": "51.47", "olaf": "52.75", "cho-gath": "49.91", "shen": "51.35", "zac": "51.02", "gangplank": "55.04", "singed": "55.04", "kayle": "55.33", "fiora": "55.52", "wukong": "56.36"}}], "Urgot": [{"synergies": {"miss-fortune": "48.29", "sona": "45.64", "blitzcrank": "45.94", "ashe": "46.11", "tristana": "58.39", "quinn": "59.41", "draven": "46.91", "vayne": "59.38", "alistar": "60.64", "varus": "58.78"}, "matchups": {"tristana": "45.04", "caitlyn": "57.71", "sivir": "58.58", "kog-maw": "63.31", "draven": "45.76", "vayne": "46.10", "ezreal": "58.15", "urgot": "48.03", "varus": "46.02", "teemo": "58.52"}}], "Wukong": [{"synergies": {"amumu": "58.36", "kassadin": "51.01", "heimerdinger": "58.28", "olaf": "49.63", "gragas": "50.47", "sejuani": "58.33", "swain": "57.76", "kayle": "58.81", "elise": "50.58", "veigar": "49.90"}, "matchups": {"rengar": "57.65", "olaf": "58.83", "cho-gath": "57.63", "shen": "57.58", "talon": "47.22", "kayle": "49.28", "dr-mundo": "57.52", "fiora": "49.35", "wukong": "49.18", "tryndamere": "48.52"}}], "Amumu": [{"synergies": {"heimerdinger": "57.92", "evelynn": "51.87", "gragas": "51.99", "nunu": "52.72", "talon": "58.00", "kayle": "58.31", "elise": "54.26", "fiora": "59.42", "wukong": "57.91", "shaco": "52.30"}, "matchups": {"amumu": "49.43", "fiddlesticks": "49.55", "nocturne": "56.12", "nunu": "58.02", "warwick": "47.85", "udyr": "56.92", "shaco": "47.54", "skarner": "55.85", "elise": "57.87", "xin-zhao": "47.57"}}], "Galio": [{"synergies": {"mordekaiser": "56.76", "gragas": "56.12", "twisted-fate": "56.82", "sejuani": "56.87", "orianna": "55.12", "master-yi": "55.32", "veigar": "55.37", "malzahar": "56.63", "fiora": "57.50", "leblanc": "54.63"}, "matchups": {"kassadin": "56.87", "heimerdinger": "51.53", "ryze": "56.20", "gragas": "56.29", "viktor": "57.58", "twisted-fate": "57.62", "morgana": "51.16", "master-yi": "53.43", "malzahar": "51.62", "ziggs": "51.45"}}], "Heimerdinger": [{"synergies": {"amumu": "57.15", "kassadin": "52.72", "gragas": "52.29", "viktor": "50.71", "twisted-fate": "51.29", "talon": "57.84", "warwick": "57.11", "elise": "50.66", "fiora": "57.86", "wukong": "58.23"}, "matchups": {"kassadin": "60.26", "galio": "48.62", "heimerdinger": "49.17", "gragas": "57.43", "zed": "57.36", "twisted-fate": "57.32", "anivia": "48.98", "leblanc": "58.01", "malzahar": "48.92", "ziggs": "52.43"}}], "Anivia": [{"synergies": {"xin-zhao": "53.95", "kassadin": "60.24", "jax": "52.88", "twisted-fate": "57.80", "syndra": "60.29", "kayle": "53.99", "karthus": "57.42", "volibear": "53.60", "lissandra": "60.22", "wukong": "53.34"}, "matchups": {"kassadin": "54.61", "galio": "52.48", "gragas": "53.39", "viktor": "52.86", "twisted-fate": "52.91", "brand": "52.50", "master-yi": "53.17", "leblanc": "52.86", "veigar": "53.62", "ziggs": "54.40"}}], "Ashe": [{"synergies": {"sona": "54.08", "sivir": "55.26", "nami": "53.88", "corki": "55.90", "taric": "54.56", "kog-maw": "54.94", "leona": "55.35", "caitlyn": "54.53", "urgot": "55.09", "ezreal": "56.36"}, "matchups": {"tristana": "52.24", "miss-fortune": "50.54", "sivir": "52.32", "quinn": "50.21", "kog-maw": "49.87", "vayne": "54.79", "ezreal": "52.67", "urgot": "57.42", "jinx": "49.68", "teemo": "50.91"}}], "Singed": [{"synergies": {"xin-zhao": "54.87", "kassadin": "57.05", "heimerdinger": "54.79", "rumble": "55.82", "zac": "60.00", "talon": "54.62", "cho-gath": "55.45", "renekton": "58.26", "master-yi": "55.90", "wukong": "56.27"}, "matchups": {"cho-gath": "56.11", "olaf": "56.06", "garen": "55.01", "rengar": "53.85", "shen": "55.04", "kha-zix": "50.62", "talon": "51.23", "kayle": "52.94", "fiora": "52.17", "wukong": "51.93"}}], "Varus": [{"synergies": {"sona": "53.74", "ezreal": "56.47", "blitzcrank": "52.62", "corki": "57.64", "taric": "53.77", "leona": "53.99", "twitch": "56.67", "urgot": "58.45", "vayne": "57.54", "teemo": "52.04"}, "matchups": {"tristana": "51.03", "miss-fortune": "52.62", "sivir": "50.87", "lucian": "51.39", "kog-maw": "52.99", "vayne": "52.92", "teemo": "52.27", "urgot": "55.70", "jinx": "50.98", "ezreal": "51.44"}}], "Twitch": [{"synergies": {"tristana": "55.01", "sona": "53.81", "sivir": "54.21", "blitzcrank": "53.14", "varus": "55.70", "jinx": "54.96", "taric": "52.99", "leona": "54.77", "vayne": "56.14", "teemo": "53.10"}, "matchups": {"tristana": "51.70", "miss-fortune": "52.79", "graves": "50.66", "quinn": "50.46", "sivir": "51.65", "lucian": "50.72", "vayne": "54.52", "teemo": "51.17", "urgot": "58.99", "ezreal": "52.15"}}], "Kog'Maw": [{"synergies": {"tristana": "53.97", "janna": "54.36", "sona": "54.35", "nami": "53.54", "corki": "53.78", "taric": "54.35", "draven": "51.95", "leona": "54.98", "alistar": "51.71", "urgot": "54.88"}, "matchups": {"tristana": "53.42", "sivir": "49.83", "corki": "49.94", "quinn": "52.84", "kog-maw": "51.75", "varus": "54.26", "caitlyn": "49.70", "urgot": "63.20", "vayne": "53.90", "teemo": "49.71"}}], "Garen": [{"synergies": {"amumu": "53.58", "heimerdinger": "53.78", "olaf": "55.98", "gragas": "56.45", "vladimir": "57.28", "riven": "56.39", "sejuani": "52.79", "elise": "56.36", "malzahar": "53.62", "wukong": "53.46"}, "matchups": {"rengar": "53.03", "cho-gath": "52.87", "olaf": "51.67", "vladimir": "51.50", "riven": "52.76", "singed": "54.17", "kayle": "53.78", "aatrox": "53.00", "fiora": "53.52", "wukong": "53.87"}}], "Nunu": [{"synergies": {"kassadin": "58.36", "galio": "52.11", "gragas": "57.56", "rammus": "51.44", "anivia": "56.84", "maokai": "59.53", "swain": "53.18", "elise": "59.24", "fiora": "52.54", "wukong": "51.55"}, "matchups": {"amumu": "55.61", "xin-zhao": "55.59", "fiddlesticks": "55.10", "nunu": "50.61", "rammus": "58.46", "udyr": "50.08", "sejuani": "55.60", "shaco": "49.46", "skarner": "49.38", "elise": "51.65"}}], "Elise": [{"synergies": {"kassadin": "59.22", "heimerdinger": "49.42", "olaf": "58.85", "gragas": "59.52", "nunu": "59.67", "rammus": "49.12", "talon": "49.69", "kayle": "49.81", "dr-mundo": "59.04", "fiora": "50.30"}, "matchups": {"lee-sin": "47.01", "xin-zhao": "57.01", "evelynn": "46.75", "amumu": "56.76", "nunu": "48.68", "maokai": "48.39", "shaco": "56.50", "warwick": "57.52", "elise": "50.86", "volibear": "55.34"}}], "Alistar": [{"synergies": {"miss-fortune": "47.84", "janna": "58.38", "blitzcrank": "57.36", "lulu": "48.08", "soraka": "47.75", "thresh": "57.41", "kog-maw": "47.18", "taric": "56.48", "urgot": "59.66", "teemo": "48.24"}, "matchups": {"sona": "56.10", "blitzcrank": "46.74", "zilean": "46.51", "lulu": "56.57", "thresh": "46.02", "karma": "46.41", "nami": "56.60", "taric": "56.79", "leona": "55.97", "alistar": "50.07"}}], "Katarina": [{"synergies": {"amumu": "56.41", "kassadin": "59.01", "gragas": "54.91", "twisted-fate": "53.61", "rammus": "54.71", "warwick": "55.21", "veigar": "53.06", "leblanc": "53.31", "fiora": "55.93", "wukong": "57.23"}, "matchups": {"galio": "50.76", "heimerdinger": "52.15", "gragas": "56.52", "zed": "55.30", "twisted-fate": "56.52", "brand": "50.16", "leblanc": "55.56", "veigar": "55.74", "malzahar": "51.73", "ziggs": "50.71"}}], "Mordekaiser": [{"synergies": {"amumu": "54.51", "galio": "56.13", "gragas": "56.11", "vladimir": "56.45", "kassadin": "56.41", "lissandra": "54.89", "talon": "55.39", "elise": "56.09", "fiora": "53.93", "wukong": "55.75"}, "matchups": {"kassadin": "56.27", "galio": "53.80", "gragas": "54.41", "veigar": "53.30", "brand": "52.87", "cassiopeia": "53.37", "velkoz": "54.01", "twisted-fate": "53.22", "lissandra": "53.25", "ziggs": "53.86"}}], "Jarvan IV": [{"synergies": {"kassadin": "54.45", "rengar": "53.74", "gragas": "54.58", "swain": "54.99", "kayle": "56.14", "skarner": "52.80", "elise": "53.47", "malzahar": "54.70", "fiora": "56.01", "wukong": "55.43"}, "matchups": {"xin-zhao": "51.70", "fiddlesticks": "51.57", "nautilus": "53.56", "nocturne": "53.23", "nunu": "55.02", "warwick": "51.74", "hecarim": "52.84", "elise": "55.24", "jarvan-iv": "49.93", "amumu": "51.18"}}], "Zac": [{"synergies": {"cho-gath": "56.24", "yorick": "57.01", "vladimir": "57.47", "nunu": "57.46", "kha-zix": "54.03", "sejuani": "53.91", "talon": "54.15", "singed": "57.44", "fiora": "53.92", "wukong": "53.90"}, "matchups": {"rengar": "51.77", "olaf": "53.81", "garen": "52.46", "shen": "52.31", "talon": "54.52", "tryndamere": "54.13", "dr-mundo": "52.36", "fiora": "55.34", "wukong": "54.20", "kayle": "53.56"}}], "Aatrox": [{"synergies": {"amumu": "55.86", "xin-zhao": "54.93", "heimerdinger": "55.18", "gragas": "54.59", "vladimir": "53.24", "shen": "54.28", "kayle": "54.61", "dr-mundo": "53.44", "wukong": "55.44", "kassadin": "53.87"}, "matchups": {"cho-gath": "55.56", "jax": "51.24", "rengar": "56.11", "shen": "55.75", "talon": "51.05", "zac": "55.44", "rumble": "56.28", "kayle": "51.28", "fiora": "54.36", "wukong": "52.59"}}], "Draven": [{"synergies": {"sona": "53.68", "graves": "57.14", "sivir": "56.07", "blitzcrank": "54.05", "nami": "52.98", "jinx": "54.98", "taric": "53.55", "leona": "54.71", "vayne": "56.59", "caitlyn": "54.97"}, "matchups": {"tristana": "52.48", "miss-fortune": "51.62", "sivir": "52.90", "quinn": "50.16", "kog-maw": "50.37", "vayne": "54.11", "ezreal": "52.73", "urgot": "55.16", "jinx": "50.10", "teemo": "52.05"}}], "Talon": [{"synergies": {"amumu": "58.78", "fiddlesticks": "57.43", "heimerdinger": "58.27", "olaf": "51.74", "kassadin": "52.97", "rammus": "56.22", "ahri": "51.33", "kayle": "56.77", "leblanc": "51.57", "veigar": "52.48"}, "matchups": {"rengar": "56.75", "tryndamere": "48.86", "olaf": "56.58", "vladimir": "56.23", "cho-gath": "56.02", "shen": "56.64", "kayle": "51.11", "fiora": "50.44", "wukong": "50.62", "kennen": "49.05"}}], "Xin Zhao": [{"synergies": {"kassadin": "53.13", "rengar": "51.53", "heimerdinger": "57.19", "gragas": "51.79", "veigar": "50.83", "kayle": "56.88", "elise": "53.14", "malzahar": "56.37", "fiora": "56.59", "wukong": "57.11"}, "matchups": {"lee-sin": "55.19", "amumu": "50.48", "nautilus": "55.75", "fiddlesticks": "49.09", "nunu": "55.92", "rammus": "50.03", "maokai": "55.57", "warwick": "49.06", "elise": "57.43", "xin-zhao": "49.86"}}], "Taric": [{"synergies": {"miss-fortune": "55.08", "nami": "56.84", "ashe": "54.14", "thresh": "56.74", "zilean": "56.87", "kog-maw": "54.26", "alistar": "56.99", "urgot": "56.47", "jinx": "54.05", "teemo": "54.17"}, "matchups": {"zyra": "51.90", "janna": "51.82", "sona": "50.72", "blitzcrank": "48.75", "zilean": "51.93", "thresh": "52.28", "nami": "50.39", "taric": "51.19", "leona": "50.60", "alistar": "58.27"}}], "Malzahar": [{"synergies": {"galio": "58.58", "xerath": "57.26", "viktor": "56.45", "karthus": "56.37", "twisted-fate": "59.27", "warwick": "56.77", "master-yi": "56.84", "leblanc": "54.67", "fiora": "58.57", "wukong": "57.25"}, "matchups": {"kassadin": "59.62", "heimerdinger": "49.25", "gragas": "58.60", "lux": "48.75", "swain": "48.85", "annie": "55.68", "leblanc": "58.82", "lissandra": "56.33", "malzahar": "49.37", "ziggs": "51.23"}}], "Lissandra": [{"synergies": {"xin-zhao": "52.78", "kassadin": "57.82", "gragas": "57.92", "leblanc": "57.41", "anivia": "60.39", "talon": "51.97", "elise": "57.69", "malzahar": "52.51", "fiora": "52.30", "wukong": "53.29"}, "matchups": {"kassadin": "53.68", "galio": "54.42", "gragas": "53.48", "zed": "52.10", "brand": "54.74", "swain": "56.78", "leblanc": "51.24", "lissandra": "50.47", "malzahar": "54.65", "ziggs": "56.39"}}], "Diana": [{"synergies": {"amumu": "54.98", "kassadin": "57.50", "gragas": "55.19", "karthus": "54.83", "twisted-fate": "55.64", "sejuani": "54.40", "warwick": "54.20", "elise": "54.63", "fiora": "55.30", "wukong": "54.49"}, "matchups": {"kassadin": "57.69", "heimerdinger": "53.00", "gragas": "55.36", "twisted-fate": "55.84", "brand": "52.28", "swain": "52.58", "leblanc": "54.22", "veigar": "55.43", "malzahar": "52.88", "ziggs": "52.94"}}], "Tristana": [{"synergies": {"sona": "52.53", "blitzcrank": "52.38", "nami": "51.35", "varus": "56.17", "taric": "51.69", "kog-maw": "56.21", "leona": "52.37", "urgot": "57.09", "vayne": "57.53", "ezreal": "56.34"}, "matchups": {"tristana": "50.07", "miss-fortune": "53.48", "graves": "51.63", "lucian": "52.00", "kog-maw": "52.27", "vayne": "53.07", "teemo": "52.33", "urgot": "54.17", "varus": "50.34", "ezreal": "51.34"}}], "Irelia": [{"synergies": {"amumu": "53.82", "fiddlesticks": "53.77", "yorick": "56.63", "ziggs": "54.85", "viktor": "53.22", "riven": "54.93", "rengar": "55.02", "cho-gath": "55.78", "kayle": "53.99", "renekton": "55.52"}, "matchups": {"rengar": "54.04", "olaf": "53.93", "jax": "52.27", "shen": "53.87", "kayle": "53.82", "poppy": "54.93", "dr-mundo": "52.68", "fiora": "54.14", "wukong": "54.25", "tryndamere": "52.67"}}], "Nami": [{"synergies": {"miss-fortune": "55.29", "zyra": "54.40", "blitzcrank": "56.08", "corki": "54.47", "soraka": "56.48", "thresh": "55.46", "leona": "54.62", "alistar": "55.89", "urgot": "55.35", "jinx": "53.97"}, "matchups": {"zyra": "53.01", "sona": "50.81", "janna": "52.21", "blitzcrank": "49.87", "zilean": "52.67", "soraka": "49.69", "karma": "53.19", "nami": "48.77", "leona": "50.32", "alistar": "57.96"}}], "Soraka": [{"synergies": {"sona": "55.29", "blitzcrank": "54.87", "nami": "56.24", "thresh": "55.79", "draven": "49.17", "leona": "58.28", "alistar": "52.00", "urgot": "55.42", "vayne": "50.87", "ezreal": "49.63"}, "matchups": {"zyra": "52.68", "sona": "51.00", "blitzcrank": "50.20", "nami": "49.46", "lulu": "52.06", "soraka": "49.87", "thresh": "52.15", "karma": "52.20", "leona": "50.48", "alistar": "57.08"}}], "Veigar": [{"synergies": {"amumu": "50.92", "kassadin": "61.36", "gragas": "60.76", "twisted-fate": "58.94", "leblanc": "57.50", "rammus": "50.31", "elise": "58.97", "malzahar": "52.41", "fiora": "52.31", "wukong": "50.88"}, "matchups": {"kassadin": "52.32", "galio": "54.89", "ziggs": "56.54", "twisted-fate": "51.61", "swain": "55.30", "morgana": "54.89", "karthus": "51.18", "leblanc": "51.57", "malzahar": "54.76", "gragas": "51.70"}}], "Janna": [{"synergies": {"miss-fortune": "53.82", "blitzcrank": "55.17", "lulu": "53.33", "soraka": "54.21", "taric": "55.45", "quinn": "52.94", "kog-maw": "53.72", "thresh": "54.72", "alistar": "56.85", "urgot": "58.11"}, "matchups": {"zyra": "50.84", "sona": "52.48", "blitzcrank": "51.74", "nami": "51.68", "lulu": "51.28", "soraka": "50.89", "thresh": "50.75", "karma": "52.99", "taric": "50.77", "alistar": "55.91"}}], "Nautilus": [{"synergies": {"xin-zhao": "53.51", "galio": "54.20", "olaf": "54.78", "gragas": "56.05", "kassadin": "55.68", "leblanc": "55.36", "elise": "57.20", "malzahar": "53.69", "fiora": "53.40", "wukong": "54.15"}, "matchups": {"xin-zhao": "54.07", "amumu": "54.06", "evelynn": "51.67", "nunu": "52.81", "maokai": "53.28", "warwick": "53.70", "hecarim": "52.37", "elise": "54.36", "volibear": "52.28", "jarvan-iv": "52.70"}}], "Evelynn": [{"synergies": {"vi": "56.58", "maokai": "57.19", "talon": "53.11", "kayle": "52.83", "elise": "56.98", "skarner": "59.08", "malzahar": "52.46", "fiora": "53.01", "wukong": "52.92", "shaco": "58.60"}, "matchups": {"lee-sin": "51.16", "fiddlesticks": "54.67", "amumu": "53.25", "rammus": "52.40", "maokai": "51.69", "trundle": "50.72", "warwick": "53.27", "hecarim": "50.73", "elise": "53.82", "xin-zhao": "53.22"}}], "Gragas": [{"synergies": {"xin-zhao": "48.38", "cho-gath": "59.37", "rumble": "59.79", "karthus": "60.15", "talon": "48.99", "warwick": "48.84", "veigar": "59.48", "leblanc": "59.48", "fiora": "50.12", "wukong": "49.45"}, "matchups": {"kassadin": "49.52", "gragas": "50.14", "twisted-fate": "47.94", "brand": "57.06", "swain": "57.27", "morgana": "57.71", "leblanc": "49.04", "veigar": "49.36", "malzahar": "57.85", "ziggs": "57.86"}}], "Zed": [{"synergies": {"amumu": "53.27", "fiddlesticks": "52.15", "heimerdinger": "53.37", "olaf": "56.70", "gragas": "56.97", "rengar": "56.55", "kassadin": "59.26", "twisted-fate": "56.00", "rammus": "51.38", "kayle": "51.93"}, "matchups": {"kassadin": "55.65", "heimerdinger": "56.62", "gragas": "54.00", "twisted-fate": "52.22", "brand": "54.39", "swain": "56.11", "akali": "54.27", "leblanc": "51.43", "veigar": "52.24", "malzahar": "55.35"}}], "Vi": [{"synergies": {"kassadin": "54.74", "heimerdinger": "55.31", "evelynn": "56.35", "ziggs": "54.49", "swain": "55.23", "kayle": "54.63", "skarner": "54.36", "elise": "55.73", "fiora": "55.32", "shaco": "54.13"}, "matchups": {"lee-sin": "52.70", "amumu": "52.75", "nocturne": "53.38", "fiddlesticks": "50.94", "nunu": "55.16", "warwick": "51.23", "sejuani": "50.81", "skarner": "53.13", "elise": "55.15", "xin-zhao": "51.26"}}], "Lulu": [{"synergies": {"tristana": "50.50", "janna": "53.38", "sona": "53.23", "blitzcrank": "53.51", "soraka": "53.61", "leona": "54.59", "alistar": "52.03", "urgot": "55.87", "vayne": "51.53", "ezreal": "50.15"}, "matchups": {"zyra": "50.96", "sona": "52.28", "zilean": "50.52", "lulu": "50.51", "soraka": "50.70", "taric": "50.62", "karma": "51.56", "nami": "50.88", "leona": "51.24", "alistar": "57.54"}}], "Master Yi": [{"synergies": {"kassadin": "53.56", "heimerdinger": "56.50", "evelynn": "52.43", "ziggs": "55.76", "nocturne": "52.95", "swain": "56.33", "singed": "56.05", "shaco": "52.88", "elise": "52.69", "malzahar": "57.29"}, "matchups": {"kassadin": "58.69", "heimerdinger": "51.25", "malzahar": "49.49", "gragas": "57.53", "viktor": "56.60", "orianna": "55.09", "master-yi": "49.53", "akali": "50.40", "leblanc": "55.09", "katarina": "50.06"}}], "Ahri": [{"synergies": {"amumu": "52.69", "xin-zhao": "51.48", "gragas": "57.43", "kassadin": "61.56", "orianna": "57.54", "cassiopeia": "56.49", "warwick": "51.83", "veigar": "57.28", "fiora": "52.85", "wukong": "52.46"}, "matchups": {"kassadin": "53.81", "heimerdinger": "55.26", "gragas": "54.32", "twisted-fate": "51.63", "brand": "54.15", "swain": "55.64", "leblanc": "52.45", "lissandra": "51.12", "malzahar": "54.35", "ziggs": "53.97"}}], "Quinn": [{"synergies": {"miss-fortune": "55.11", "sona": "53.85", "nami": "53.43", "tristana": "50.41", "thresh": "50.59", "leona": "53.46", "alistar": "51.72", "urgot": "60.66", "vayne": "52.61", "teemo": "54.47"}, "matchups": {"tristana": "51.83", "miss-fortune": "52.33", "graves": "51.11", "corki": "50.38", "kog-maw": "51.18", "draven": "51.51", "vayne": "53.68", "teemo": "50.76", "urgot": "55.96", "ezreal": "52.79"}}], "Ezreal": [{"synergies": {"tristana": "56.71", "sona": "51.46", "sivir": "56.02", "blitzcrank": "51.06", "varus": "56.70", "taric": "50.35", "leona": "52.03", "urgot": "59.21", "vayne": "58.05", "teemo": "50.88"}, "matchups": {"tristana": "49.89", "miss-fortune": "53.35", "jinx": "52.23", "kog-maw": "51.85", "draven": "51.88", "vayne": "51.61", "teemo": "52.27", "urgot": "57.50", "varus": "49.74", "ezreal": "50.67"}}]}
+	;
+	
+	var svg;
+	window.updateSynergyAndMatchupViz = function(name) {
+		var datatest = dataSet[name][0];
+		console.log(datatest);
+		var matchups = [];
+		var d = datatest['matchups'];
+		Object.keys(datatest['matchups']).forEach(function(key, i){
+			var value = d[key]
+			if (i >= 5) {
+				value = 100 - d[key];
+			}
+			var obj = {name: key, value: value};
+			matchups.push(obj);
+		});
+		matchups = matchups.slice(0,5).concat(matchups.slice(5, 10).reverse());
+
+		var synergies = [];
+		var e = datatest['synergies'];
+		Object.keys(datatest['synergies']).forEach(function(key, i){
+			var value = e[key]
+			if (i >= 5) {
+				value = 100 - e[key];
+			}
+			var obj = {name: key, value: value};
+			synergies.push(obj);
+		});
+		synergies = synergies.slice(0,5).concat(synergies.slice(5, 10).reverse());
+
+		var x = d3.scale.linear()
+			.range([0, width])
+
+		var y = d3.scale.ordinal()
+			.rangeRoundBands([0, height], .2);
+
+		var xAxis = d3.svg.axis()
+			.scale(x)
+			.orient("top");
+
+		document.getElementById("matchup-div").innerHTML = "";
+		document.getElementById("synergy-div").innerHTML = "";
+		svg = d3.select("#matchup-div").append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		x.domain([40,60])
+		y.domain(matchups.map(function (d) {
+			return d.name;
+		}));
+
+		svg.selectAll(".bar")
+			.data(matchups)
+			.enter().append("rect")
+			.attr("fill", function(d, i){
+				if (i >= 5) {
+					return "red"
 				}
-			}
-
-	var matchups = [];
-	var d = datatest['matchups'];
-	Object.keys(datatest['matchups']).forEach(function(key, i){
-		var value = d[key]
-		if (i >= 5) {
-			value = 100 - d[key];
-		}
-		var obj = {name: key, value: value};
-		matchups.push(obj);
-	});
-	matchups = matchups.slice(0,5).concat(matchups.slice(5, 10).reverse());
-
-	var synergies = [];
-	var e = datatest['synergies'];
-	Object.keys(datatest['synergies']).forEach(function(key, i){
-		var value = e[key]
-		if (i >= 5) {
-			value = 100 - e[key];
-		}
-		var obj = {name: key, value: value};
-		synergies.push(obj);
-	});
-	synergies = synergies.slice(0,5).concat(synergies.slice(5, 10).reverse());
-
-	var x = d3.scale.linear()
-		.range([0, width])
-
-	var y = d3.scale.ordinal()
-		.rangeRoundBands([0, height], .2);
-
-	var xAxis = d3.svg.axis()
-		.scale(x)
-		.orient("top");
-
-	var svg = d3.select("#matchup-div").append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-		.append("g")
-		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	x.domain([40,60])
-	y.domain(matchups.map(function (d) {
-		return d.name;
-	}));
-
-	svg.selectAll(".bar")
-		.data(matchups)
-		.enter().append("rect")
-		.attr("fill", function(d, i){
-			if (i >= 5) {
-				return "red"
-			}
-			else return "green"
+				else return "green"
+			})
+			.attr("class", "bar")
+			.attr("x", function (d) {
+				if (x(d.value) - x(50) < 0) {
+					return (x(Math.min(0, d.value)) + (x(d.value) - x(50)));
+				}
+				else {
+					return x(Math.min(0, d.value));
+				}
 		})
-		.attr("class", "bar")
-		.attr("x", function (d) {
-			if (x(d.value) - x(50) < 0) {
-				return (x(Math.min(0, d.value)) + (x(d.value) - x(50)));
-			}
-			else {
-				return x(Math.min(0, d.value));
-			}
-	})
-		.attr("y", function (d) {
-		return y(d.name);
-	})
-		.attr("width", function (d) {
-		return Math.abs(x(d.value) - x(50));
-	})
-		.attr("height", y.rangeBand())
-		.attr("transform", "translate(" + width/0.4 + ", 0)");
-
-	svg.append("g")
-		.attr("class", "x axis")
-		.call(xAxis);
-
-	svg.append("g")
-		.attr("class", "y axis")
-		.attr("transform", "translate(" + width/0.4 + ", 0)")
-		.append("line")
-		.attr("x1", x(0))
-		.attr("x2", x(0))
-		.attr("y2", height);
-
-	svg.selectAll(".text")
-	   .data(matchups)
-	   .enter()
-	   .append("text")
-	   .text(function(d) {
-			var text = d.name + ", " + d.value;
-			console.log(text);
-			return text;
-	   })
-	   .attr("x", function(d, i) {
-			if (i >= 5) {
-				return x(Math.min(0, d.value)) + 5;
-			}
-			else {
-				return x(Math.min(0, d.value)) - 5;
-			}
-	   })
-	   .attr("y", function(d) {
+			.attr("y", function (d) {
 			return y(d.name);
-	   })
-	   .attr("text-anchor", function(d,i){
-			if (i >=5) {
-				return "start";
-			}
-			else {
-				return "end";
-			}
-	   })
-	   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")");
-
-	function type(d) {
-		d.value = +d.value;
-		return d;
-	}
-
-	var x1 = d3.scale.linear()
-		.range([0, width])
-
-	var y1 = d3.scale.ordinal()
-		.rangeRoundBands([0, height], .2);
-
-	var xAxis1 = d3.svg.axis()
-		.scale(x1)
-		.orient("top");
-
-	var svg1 = d3.select("#synergy-div").append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-		.append("g")
-		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-	x1.domain([40,60])
-	y1.domain(synergies.map(function (d) {
-		return d.name;
-	}));
-
-	svg1.selectAll(".bar")
-		.data(synergies)
-		.enter().append("rect")
-		.attr("fill", function(d, i){
-			if (i >= 5) {
-				return "red"
-			}
-			else return "green"
 		})
-		.attr("class", "bar")
-		.attr("x", function (d) {
-			if (x1(d.value) - x1(50) < 0) {
-				return (x1(Math.min(0, d.value)) + (x1(d.value) - x1(50)));
-			}
-			else {
-				return x1(Math.min(0, d.value));
-			}
-	})
-		.attr("y", function (d) {
-		return y1(d.name);
-	})
-		.attr("width", function (d) {
-		return Math.abs(x1(d.value) - x1(50));
-	})
-		.attr("height", y1.rangeBand())
-		.attr("transform", "translate(" + width/0.4 + ", 0)");
+			.attr("width", function (d) {
+			return Math.abs(x(d.value) - x(50));
+		})
+			.attr("height", y.rangeBand())
+			.attr("transform", "translate(" + width/0.4 + ", 0)");
 
-	svg1.append("g")
-		.attr("class", "x axis")
-		.call(xAxis1);
+		svg.append("g")
+			.attr("class", "x axis")
+			.call(xAxis);
 
-	svg1.append("g")
-		.attr("class", "y axis")
-		.attr("transform", "translate(" + width/0.4 + ", 0)")
-		.append("line")
-		.attr("x1", x1(0))
-		.attr("x2", x1(0))
-		.attr("y2", height);
+		svg.append("g")
+			.attr("class", "y axis")
+			.attr("transform", "translate(" + width/0.4 + ", 0)")
+			.append("line")
+			.attr("x1", x(0))
+			.attr("x2", x(0))
+			.attr("y2", height);
 
-	svg1.selectAll(".text")
-	   .data(synergies)
-	   .enter()
-	   .append("text")
-	   .text(function(d) {
-			var text = d.name + ", " + d.value;
-			console.log(text);
-			return text;
-	   })
-	   .attr("x", function(d, i) {
-			if (i >= 5) {
-				return x(Math.min(0, d.value)) + 5;
-			}
-			else {
-				return x(Math.min(0, d.value)) - 5;
-			}
-	   })
-	   .attr("y", function(d) {
+		svg.selectAll(".text")
+		   .data(matchups)
+		   .enter()
+		   .append("text")
+		   .text(function(d) {
+				var text = d.name + ", " + d.value;
+				console.log(text);
+				return text;
+		   })
+		   .attr("x", function(d, i) {
+				if (i >= 5) {
+					return x(Math.min(0, d.value)) + 5;
+				}
+				else {
+					return x(Math.min(0, d.value)) - 5;
+				}
+		   })
+		   .attr("y", function(d) {
+				return y(d.name);
+		   })
+		   .attr("text-anchor", function(d,i){
+				if (i >=5) {
+					return "start";
+				}
+				else {
+					return "end";
+				}
+		   })
+		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")");
+
+		function type(d) {
+			d.value = +d.value;
+			return d;
+		}
+
+		var x1 = d3.scale.linear()
+			.range([0, width])
+
+		var y1 = d3.scale.ordinal()
+			.rangeRoundBands([0, height], .2);
+
+		var xAxis1 = d3.svg.axis()
+			.scale(x1)
+			.orient("top");
+
+		var svg1 = d3.select("#synergy-div").append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		x1.domain([40,60])
+		y1.domain(synergies.map(function (d) {
+			return d.name;
+		}));
+
+		svg1.selectAll(".bar")
+			.data(synergies)
+			.enter().append("rect")
+			.attr("fill", function(d, i){
+				if (i >= 5) {
+					return "red"
+				}
+				else return "green"
+			})
+			.attr("class", "bar")
+			.attr("x", function (d) {
+				if (x1(d.value) - x1(50) < 0) {
+					return (x1(Math.min(0, d.value)) + (x1(d.value) - x1(50)));
+				}
+				else {
+					return x1(Math.min(0, d.value));
+				}
+		})
+			.attr("y", function (d) {
 			return y1(d.name);
-	   })
-	   .attr("text-anchor", function(d,i){
-			if (i >=5) {
-				return "start";
-			}
-			else {
-				return "end";
-			}
-	   })
-	   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")");
+		})
+			.attr("width", function (d) {
+			return Math.abs(x1(d.value) - x1(50));
+		})
+			.attr("height", y1.rangeBand())
+			.attr("transform", "translate(" + width/0.4 + ", 0)");
+
+		svg1.append("g")
+			.attr("class", "x axis")
+			.call(xAxis1);
+
+		svg1.append("g")
+			.attr("class", "y axis")
+			.attr("transform", "translate(" + width/0.4 + ", 0)")
+			.append("line")
+			.attr("x1", x1(0))
+			.attr("x2", x1(0))
+			.attr("y2", height);
+
+		svg1.selectAll(".text")
+		   .data(synergies)
+		   .enter()
+		   .append("text")
+		   .text(function(d) {
+				var text = d.name + ", " + d.value;
+				console.log(text);
+				return text;
+		   })
+		   .attr("x", function(d, i) {
+				if (i >= 5) {
+					return x(Math.min(0, d.value)) + 5;
+				}
+				else {
+					return x(Math.min(0, d.value)) - 5;
+				}
+		   })
+		   .attr("y", function(d) {
+				return y1(d.name);
+		   })
+		   .attr("text-anchor", function(d,i){
+				if (i >=5) {
+					return "start";
+				}
+				else {
+					return "end";
+				}
+		   })
+		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")");
+	}
 })();

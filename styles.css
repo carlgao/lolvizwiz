@@ -104,10 +104,9 @@ textarea, input {
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-bottom: 15px;
-	color: #EEEEEE;
+	color: #DDDDDD;
 	display: inline-block;
-	background-color: #111111;
-	opacity: 0.6;
+	background-color: rgba(17, 17, 17, 0.6)
 }
 #name {
 	height: 80px;

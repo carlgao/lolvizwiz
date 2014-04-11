@@ -1,4 +1,4 @@
-// pick rate visualization module
+// ban rate visualization module
 (function() {
 	var margin = {
 		top: 50,
@@ -12,7 +12,7 @@
 	var x = d3.scale.ordinal().rangeBands([0, width]);
 	var y = d3.scale.linear().range([height, 0]);
 
-	var svg = d3.select("#pick-div").append("svg").attr({
+	var svg = d3.select("#ban-div").append("svg").attr({
 		width: width + margin.left + margin.right,
 		height: height + margin.top + margin.bottom
 	}).append("g").attr({
@@ -27,7 +27,7 @@
 	var dataSet;
 	var xAxisG;
 	var yAxisG;
-	d3.json("data/pick_rates.json", function(error, json) {
+	d3.json("data/ban_rates.json", function(error, json) {
 		if (error) return console.warn(error);
 		
 		dataSet = json;
@@ -36,18 +36,18 @@
 				dataSet[champion][i].percent /= 100;
 			}
 		}
-		window.updatePickRateViz("Kassadin");
+		window.updateBanRateViz("Kassadin");
 	});
 
-	// updates pick rate visualization when user selects a new champion
-	var pickG;
-	window.updatePickRateViz = function(championName) {
+	// updates ban rate visualization when user selects a new champion
+	var banG;
+	window.updateBanRateViz = function(championName) {
 		var championData = dataSet[championName];
 		// clear previous graph and make a new one
-		if (pickG != undefined)
-			pickG.remove();
-		pickG = svg.append("g")
-		.attr("id", "pick-g")
+		if (banG != undefined)
+			banG.remove();
+		banG = svg.append("g")
+		.attr("id", "ban-g")
 		
 		// update domains
 		x.domain(championData.map(function(d) { return d.date; }));
@@ -92,13 +92,13 @@
 		.tickFormat(d3.format("%"));
 		yAxisG.call(yAxis);
 		 	
-		// draw pick rate line
-		pickG.append("path")
+		// draw ban rate line
+		banG.append("path")
 		.attr("class", "line")
 		.attr("d", function() { return lineFunction(championData); });
 		
-		// draw pick rate points
-		pickG.append("g")
+		// draw ban rate points
+		banG.append("g")
 		.selectAll(".point")
 		.data(championData)
 		.enter().append("circle")
@@ -159,3 +159,4 @@
 			d3.select("#tooltip").remove();
 		})*/
 }());
+

@@ -19,6 +19,49 @@
 
 		<title>LoL VizWiz</title>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<style type="text/css">
+			text {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 9pt;
+				/*font-weight: lighter;*/
+			}
+
+			.axis text {
+				font: 10px sans-serif;
+			}
+
+			.station{
+				fill:lightgrey;
+				opacity: .7;
+			}
+			.station.hasData{
+				fill:blue;
+				opacity: 1;
+			}
+			.hourLine{
+				fill:none;
+				stroke:steelblue;
+
+			}
+			.brush .extent{
+				fill:gray;
+				opacity: .3;
+			}
+
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: #000;
+				shape-rendering: crispEdges;
+			}
+			.line {
+				fill: none;
+				stroke: steelblue;
+				stroke-width: 1.5px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -53,10 +96,18 @@
 			</div>
 		</div>
 
-		<!--Include JavaScript files-->
-		<script type="text/javascript" src="jquery.js"></script>
-		<script type="text/javascript" src="champs.js"></script>
+		<!--Include custom JavaScript files-->
 		<script type="text/javascript" src="scripts.js"></script>
-		<!--<script type="text/javascript" src="pick-viz.js"></script>-->
+		<script type="text/javascript" src="champs.js"></script>
+		<script type="text/javascript" src="pick-viz.js"></script>
+		<script type="text/javascript" src="ban-viz.js"></script>
+		<script type="text/javascript" src="matchups_and_synergies.js"></script>
+		<script type="text/javascript">
+			// call this function when the user selects a champion
+			var championSelected = function(name) {
+				window.updatePickRateViz(name);
+				window.updateBanRateViz(name);
+			};
+		</script>
 	</body>
 </html>

@@ -1,8 +1,18 @@
+<!--
+  League of Legends Viz Wiz
+  CS171 Final Project, May 2014
+  Authors: Shannon Zhu, Carl Gao, Jesse Chen
+-->
+
 <html>
 	<head>
+		<!--Include CSS files-->
+		<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+
 		<title>LoL VizWiz</title>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
 		<style type="text/css">
 			text {
 				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -45,11 +55,42 @@
 			}
 		</style>
 	</head>
+
 	<body>
-		<div id="pick-div"></div>
-		<div id="ban-div"></div>
-		<div id="synergy-div"></div>
-		<div id="matchup-div"></div>
+		<div id="searchbar">
+			<div id="toprow">
+			<div id="searchtextcontainer">
+				<div id="searchicon"><img id="mglass" src="searchicon.png"></div>
+				<div id="searchtext">
+					<textarea id="search" rows="1" cols="21"></textarea>
+				</div>
+			</div>
+			</div>
+			<div id="bottomrow">
+				<div id="champcontainer"></div>
+			</div>
+		</div>
+		<div id="searchbarholder"></div>
+		<div id="content">
+			<div id="nameblock">
+				<div id="name"></div>
+				<div id="title"></div>
+			</div>
+
+			<div id="linecharts">
+				<div id="pick-div" class="chart"></div>
+				<div id="ban-div" class="chart"></div>
+			</div>
+
+			<div id="barcharts">
+				<div id="matchup-div" class="chart"></div>
+				<div id="synergy-div" class="chart"></div>
+			</div>
+		</div>
+
+		<!--Include custom JavaScript files-->
+		<script type="text/javascript" src="scripts.js"></script>
+		<script type="text/javascript" src="champs.js"></script>
 		<script type="text/javascript" src="pick-viz.js"></script>
 		<script type="text/javascript" src="ban-viz.js"></script>
 		<script type="text/javascript" src="matchups_and_synergies.js"></script>

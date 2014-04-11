@@ -36,7 +36,6 @@
 				dataSet[champion][i].percent /= 100;
 			}
 		}
-		window.updateBanRateViz("Kassadin");
 	});
 
 	// updates ban rate visualization when user selects a new champion

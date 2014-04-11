@@ -68,7 +68,7 @@ var xAxis = d3.svg.axis()
     .scale(x)
     .orient("top");
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#matchup-div").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -163,7 +163,7 @@ var xAxis1 = d3.svg.axis()
     .scale(x1)
     .orient("top");
 
-var svg1 = d3.select("body").append("svg")
+var svg1 = d3.select("#synergy-div").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")

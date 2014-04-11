@@ -56,12 +56,12 @@
 		y.domain([0, 0.02 + d3.max(championData, function(d) { return d.percent; })]);
 		
 		// draw x axis
-		xAxisG = svg.append("g")
+		xAxisG = pickG.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")");
 
 		// draw y axis
-		yAxisG = svg.append("g")
+		yAxisG = pickG.append("g")
 		.attr("class", "y axis");
 		
 		// select x tick values to display, since displaying all of them leads to clutter

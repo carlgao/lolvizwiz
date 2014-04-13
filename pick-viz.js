@@ -36,14 +36,11 @@
 				dataSet[champion][i].percent /= 100;
 			}
 		}
-		console.log("json load", dataSet);
 	});
 
 	// updates pick rate visualization when user selects a new champion
 	var pickG;
 	window.updatePickRateViz = function(championName) {
-		console.log("update", dataSet);
-		console.log(championName);
 		var championData = dataSet[championName];
 		// clear previous graph and make a new one
 		if (pickG != undefined)

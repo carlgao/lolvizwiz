@@ -115,6 +115,7 @@ var drawSearch = function(champArray) {
 				document.getElementById('title').innerHTML = champArray[j].title;
 				window.updatePickRateViz(name);
 				window.updateBanRateViz(name);
+				window.updateSynergyAndMatchupViz(name);
 			});
 		})();
 	}

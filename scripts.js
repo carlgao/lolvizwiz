@@ -9,13 +9,37 @@
 
 $(document).ready(function() {
     drawSearch(CHAMPS);
-    $('#search').keyup(function(e) {
-    	var contents = $('#search').val();
-    	console.log(contents);
-    	processArray(contents);
-    	if (e.which == 13) // enter
+    $('#search').keydown(function(e) {
+    	if (e.which == 13)
     	{
-    		// if contents matches one champ exactly, go to that page (NEED TO IMPLEMENT THIS)
+    		e.preventDefault();
+    	}
+    });
+    $('#search').keyup(function(e) {
+    	var contents = "";
+    	if (e.which != 13)
+    	{
+    		contents = $('#search').val();
+    		drawSearch(processArray(contents));
+    	}
+    	else // enter
+    	{
+    		contents = $('#search').val();
+    		var matchone = processArray(contents);
+    		if(matchone.length == 1)
+    		{
+				$('body').css({
+					'background-image': 'url(' + escape(matchone[0].portrait) + ')',
+					'background-repeat': 'no-repeat'
+				});
+				var name = matchone[0].name;
+				document.getElementById('name').innerHTML = name;
+				document.getElementById('title').innerHTML = matchone[0].title;
+				window.updatePickRateViz(name);
+				window.updateBanRateViz(name);
+				contents = "";
+				$('#search').value = "";
+    		}
     	}
     }); 
 });
@@ -32,7 +56,7 @@ var processArray = function(contents) {
 			filtered.push(CHAMPS[i]);
 		}
 	}
-	drawSearch(filtered);
+	return filtered; 
 };
 
 // draw filtered champ array into search bar
@@ -82,7 +106,7 @@ var drawSearch = function(champArray) {
 		(function() {
 			var j = i;
 			$(imgnail).on('click', function() {
-				$('#content').css({
+				$('body').css({
 					'background-image': 'url(' + escape(champArray[j].portrait) + ')',
 					'background-repeat': 'no-repeat'
 				});

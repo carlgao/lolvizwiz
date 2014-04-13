@@ -7,7 +7,7 @@
 		left: 50
 	};
 	
-	var width = 600 - margin.left - margin.right;
+	var width = 550 - margin.left - margin.right;
 	var height = 300 - margin.bottom - margin.top;
 	var x = d3.scale.ordinal().rangeBands([0, width]);
 	var y = d3.scale.linear().range([height, 0]);

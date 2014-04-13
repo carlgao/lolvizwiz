@@ -8,7 +8,7 @@
 
 
 $(document).ready(function() {
-    drawSearch(CHAMPS);
+    drawSearch(CHAMPS, []);
     $('#search').keydown(function(e) {
     	if (e.which == 13)
     	{
@@ -20,12 +20,19 @@ $(document).ready(function() {
     	if (e.which != 13)
     	{
     		contents = $('#search').val();
-    		drawSearch(processArray(contents));
+    		contents = contents.replace(/\./g, "");
+    		contents = contents.replace(/ /g, "");
+    		contents = contents.replace(/'/g, "");
+    		var results = processArray(contents);
+    		drawSearch(results[0], results[1]);
     	}
     	else // enter
     	{
     		contents = $('#search').val();
-    		var matchone = processArray(contents);
+    		contents = contents.replace(/\./g, "");
+    		contents = contents.replace(/ /g, "");
+    		contents = contents.replace(/'/g, "");
+    		var matchone = processArray(contents)[0];
     		if(matchone.length == 1)
     		{
 				$('body').css({
@@ -38,7 +45,6 @@ $(document).ready(function() {
 				window.updatePickRateViz(name);
 				window.updateBanRateViz(name);
 				contents = "";
-				$('#search').value = "";
     		}
     	}
     }); 
@@ -47,6 +53,7 @@ $(document).ready(function() {
 // filter champ array to only keep what matches search query
 var processArray = function(contents) {
 	var filtered = [];
+	var complement = [];
 	for (var i = 0; i < CHAMPS.length; i++)
 	{
 		var curchamp = CHAMPS[i].id;
@@ -55,22 +62,69 @@ var processArray = function(contents) {
 		{
 			filtered.push(CHAMPS[i]);
 		}
+		else 
+		{
+			complement.push(CHAMPS[i]);
+		}
 	}
-	return filtered; 
+	var sets = [filtered, complement];
+	return sets; 
 };
 
 // draw filtered champ array into search bar
-var drawSearch = function(champArray) {
+var drawSearch = function(champArray, complement) {
 	document.getElementById('champcontainer').innerHTML = "";
-	for (var i = 0; i < champArray.length; i++)
+	for (var i = 0; i < champArray.length + complement.length; i++)
 	{
 		// create html elements in search bar
 		var div = document.createElement('div');
 		var imgnail = document.createElement('div');
 		var img = document.createElement('img');
 		var text = document.createElement('div');
-		text.innerHTML = champArray[i].name;
-		img.setAttribute('src', champArray[i].thumbnail);
+		if (i < champArray.length)
+		{
+			text.innerHTML = champArray[i].name;
+			img.setAttribute('src', champArray[i].thumbnail);
+			(function() {
+				var j = i;
+				$(imgnail).on('click', function() {
+					$('body').css({
+						'background-image': 'url(' + escape(champArray[j].portrait) + ')',
+						'background-repeat': 'no-repeat'
+					});
+					var name = champArray[j].name;
+					document.getElementById('name').innerHTML = name;
+					document.getElementById('title').innerHTML = champArray[j].title;
+					window.updatePickRateViz(name);
+					window.updateBanRateViz(name);
+					window.updateSynergyAndMatchupViz(name);
+				});
+			})();
+		}
+		else
+		{
+			var newi = i - champArray.length;
+			text.innerHTML = complement[newi].name;
+			img.setAttribute('src', complement[newi].thumbnail);
+			$(div).css({
+				opacity: 0.18
+			});
+			(function() {
+				var j = newi;
+				$(imgnail).on('click', function() {
+					$('body').css({
+						'background-image': 'url(' + escape(complement[j].portrait) + ')',
+						'background-repeat': 'no-repeat'
+					});
+					var name = complement[j].name;
+					document.getElementById('name').innerHTML = name;
+					document.getElementById('title').innerHTML = complement[j].title;
+					window.updatePickRateViz(name);
+					window.updateBanRateViz(name);
+					window.updateSynergyAndMatchupViz(name);
+				});
+			})();
+		}
 		// assign css attributes
 		$(img).css({
 			'max-width': '100%',
@@ -103,7 +157,7 @@ var drawSearch = function(champArray) {
 		$(div).append(imgnail);
 		$('#champcontainer').append(div);
 		// onclick features
-		(function() {
+		/*(function() {
 			var j = i;
 			$(imgnail).on('click', function() {
 				$('body').css({
@@ -117,7 +171,6 @@ var drawSearch = function(champArray) {
 				window.updateBanRateViz(name);
 				window.updateSynergyAndMatchupViz(name);
 			});
-		})();
+		})();*/
 	}
 };
-

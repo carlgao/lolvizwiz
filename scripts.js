@@ -23,6 +23,7 @@ $(document).ready(function() {
     		contents = contents.replace(/\./g, "");
     		contents = contents.replace(/ /g, "");
     		contents = contents.replace(/'/g, "");
+    		contents = contents.toLowerCase();
     		var results = processArray(contents);
     		drawSearch(results[0], results[1]);
     	}
@@ -32,6 +33,7 @@ $(document).ready(function() {
     		contents = contents.replace(/\./g, "");
     		contents = contents.replace(/ /g, "");
     		contents = contents.replace(/'/g, "");
+    		contents = contents.toLowerCase();
     		var matchone = processArray(contents)[0];
     		if(matchone.length == 1)
     		{

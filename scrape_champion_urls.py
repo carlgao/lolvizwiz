@@ -13,6 +13,5 @@ for hero in heroesList.findAll('li'):
     val = hero.find('a')['href']
     heroUrls[key] = val
 
-outFile = open('data/champion_urls.p', 'wb')
-pickle.dump(heroUrls, outFile)
-outFile.close()
+with open('data/champion_urls.p', 'wb') as outFile:
+	pickle.dump(heroUrls, outFile)

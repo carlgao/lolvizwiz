@@ -49,7 +49,8 @@
 
 		var xAxis = d3.svg.axis()
 			.scale(x)
-			.orient("top");
+			.orient("top")
+			.tickFormat(function(d) { return d + "%"; });
 
 		document.getElementById("matchup-div").innerHTML = "";
 		document.getElementById("synergy-div").innerHTML = "";
@@ -108,7 +109,7 @@
 		   .enter()
 		   .append("text")
 		   .text(function(d) {
-				var text = d.name + ", " + d.value;
+				var text = d.name + ", " + d.value + "%";
 				console.log(text);
 				return text;
 		   })
@@ -131,7 +132,8 @@
 					return "end";
 				}
 		   })
-		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")");
+		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")")
+		   .attr("fill", "white");
 
 		function type(d) {
 			d.value = +d.value;
@@ -146,7 +148,8 @@
 
 		var xAxis1 = d3.svg.axis()
 			.scale(x1)
-			.orient("top");
+			.orient("top")
+			.tickFormat(function(d) { return d + "%"; });
 
 		var svg1 = d3.select("#synergy-div").append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -203,7 +206,7 @@
 		   .enter()
 		   .append("text")
 		   .text(function(d) {
-				var text = d.name + ", " + d.value;
+				var text = d.name + ", " + d.value + "%";
 				console.log(text);
 				return text;
 		   })
@@ -226,6 +229,7 @@
 					return "end";
 				}
 		   })
-		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")");
+		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")")
+		   .attr("fill", "white");
 	}
 })();

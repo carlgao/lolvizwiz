@@ -70,9 +70,9 @@
 			.enter().append("rect")
 			.attr("fill", function(d, i){
 				if (i >= 5) {
-					return "red"
+					return "#EE2C2C"
 				}
-				else return "green"
+				else return "#9CCB19"
 			})
 			.attr("class", "bar")
 			.attr("x", function (d) {
@@ -167,9 +167,9 @@
 			.enter().append("rect")
 			.attr("fill", function(d, i){
 				if (i >= 5) {
-					return "red"
+					return "#EE2C2C"
 				}
-				else return "green"
+				else return "#9CCB19"
 			})
 			.attr("class", "bar")
 			.attr("x", function (d) {

@@ -26,9 +26,10 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: auto;
-	background-size: 100%;
-	background-position: 0px 130px;
+	background-size: cover;
+	background-position: 0px 134px;
 	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 .chart {
 	background-color: rgba(17, 17, 17, 0.65);
@@ -57,7 +58,7 @@ body {
 /* Searchbar */
 #searchbar {
 	width: 100%;
-	height: 130px;
+	height: 134px;
 	position: fixed;
 	background-color: #151515;
 	z-index: 50;
@@ -108,15 +109,36 @@ textarea, input {
 	overflow-x: scroll;
 	overflow-y: hidden;
 	white-space: nowrap;
+	padding-bottom: 10px;
+}
+
+#champcontainer::-webkit-scrollbar {
+    -webkit-appearance: none;
+	width: 8px;
+	height: 8px;
+}
+
+#champcontainer::-webkit-scrollbar-track:horizontal {
+	height:10px;
+	background: transparent;
+	-webkit-border-radius: 6px;
+}
+
+#champcontainer::-webkit-scrollbar-thumb:horizontal {
+height: 50px;
+background-color: rgba(255,255,255,0.1);
+border: 1px solid transparent;
+-webkit-border-radius: 6px;
 }
 
 /* Body */
 #searchbarholder {
-	height: 130px;
+	height: 134px;
 }
 #content {
-	width: 100%;
+	max-width: 1200px;
 	height: 100%;
+	margin: 0 auto;
 }
 
 /* Name Block */
@@ -230,3 +252,4 @@ text {
 	margin: 10px;
 	float: right;
 }
+

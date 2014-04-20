@@ -6,10 +6,10 @@
  *
 */
 
-
 $(document).ready(function() {
     drawSearch(CHAMPS, []);
     $('#search').keydown(function(e) {
+		document.getElementById('champcontainer').scrollLeft = 0;
     	if (e.which == 13)
     	{
     		e.preventDefault();
@@ -39,7 +39,6 @@ $(document).ready(function() {
     		{
 				$('body').css({
 					'background-image': 'url(' + escape(matchone[0].portrait) + ')',
-					'background-repeat': 'no-repeat'
 				});
 				var name = matchone[0].name;
 				document.getElementById('name').innerHTML = name;
@@ -92,7 +91,6 @@ var drawSearch = function(champArray, complement) {
 				$(imgnail).on('click', function() {
 					$('body').css({
 						'background-image': 'url(' + escape(champArray[j].portrait) + ')',
-						'background-repeat': 'no-repeat'
 					});
 					var name = champArray[j].name;
 					document.getElementById('name').innerHTML = name;
@@ -116,7 +114,6 @@ var drawSearch = function(champArray, complement) {
 				$(imgnail).on('click', function() {
 					$('body').css({
 						'background-image': 'url(' + escape(complement[j].portrait) + ')',
-						'background-repeat': 'no-repeat'
 					});
 					var name = complement[j].name;
 					document.getElementById('name').innerHTML = name;

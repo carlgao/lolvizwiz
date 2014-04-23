@@ -16,7 +16,6 @@
 	var svg;
 	window.updateSynergyAndMatchupViz = function(name) {
 		var datatest = dataSet[name][0];
-		console.log(datatest);
 		var matchups = [];
 		var d = datatest['matchups'];
 		Object.keys(datatest['matchups']).forEach(function(key, i){
@@ -110,7 +109,6 @@
 		   .append("text")
 		   .text(function(d) {
 				var text = d.name + ", " + d.value + "%";
-				console.log(text);
 				return text;
 		   })
 		   .attr("x", function(d, i) {
@@ -207,7 +205,6 @@
 		   .append("text")
 		   .text(function(d) {
 				var text = d.name + ", " + d.value + "%";
-				console.log(text);
 				return text;
 		   })
 		   .attr("x", function(d, i) {

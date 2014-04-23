@@ -50,7 +50,8 @@
 		
 		// update domains
 		x.domain(championData.map(function(d) { return d.date; }));
-		y.domain([0, 0.02 + d3.max(championData, function(d) { return d.percent; })]);
+		yMax = 0.01 + d3.max(championData, function(d) { return d.percent; });
+		y.domain([0, yMax]);
 		
 		// draw x axis
 		xAxisG = pickG.append("g")
@@ -88,6 +89,7 @@
 		var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left")
+		.ticks(Math.min(yMax*100, 10))
 		.tickFormat(d3.format("%"));
 		yAxisG.call(yAxis);
 		 	

@@ -142,7 +142,13 @@ var drawSearch = function(champArray, complement) {
 		// assign css attributes
 		$(img).css({
 			'max-width': '100%',
-			'max-height': '100%'
+			'max-height': '100%',
+			'opacity': '.90'
+		});
+		$(img).hover(function() {
+			$(this).css('opacity', '1');
+		}, function() {
+			$(this).css('opacity', '.90');
 		});
 		$(imgnail).css({
 			width: '80px',

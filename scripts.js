@@ -6,7 +6,11 @@
  *
 */
 
+CONTENT = $('#content');
+HOMEPAGE = $('#homepage');
+
 $(document).ready(function() {
+	$('#content').replaceWith(HOMEPAGE);
     drawSearch(CHAMPS, []);
     $('#search').keydown(function(e) {
 		document.getElementById('champcontainer').scrollLeft = 0;
@@ -40,6 +44,7 @@ $(document).ready(function() {
 				$('body').css({
 					'background-image': 'url(' + escape(matchone[0].portrait) + ')',
 				});
+				showAll();
 				var name = matchone[0].name;
 				document.getElementById('name').innerHTML = name;
 				document.getElementById('title').innerHTML = matchone[0].title;
@@ -49,6 +54,13 @@ $(document).ready(function() {
     		}
     	}
     }); 
+	// 
+	$('#home').on('click', function() {
+		hideAll();
+		$('#search').val("");
+		var results = processArray("");
+		drawSearch(results[0], results[1]);
+	});
 });
 
 // filter champ array to only keep what matches search query
@@ -89,6 +101,7 @@ var drawSearch = function(champArray, complement) {
 			(function() {
 				var j = i;
 				$(imgnail).on('click', function() {
+					showAll();
 					$('body').css({
 						'background-image': 'url(' + escape(champArray[j].portrait) + ')',
 					});
@@ -112,6 +125,7 @@ var drawSearch = function(champArray, complement) {
 			(function() {
 				var j = newi;
 				$(imgnail).on('click', function() {
+					showAll();
 					$('body').css({
 						'background-image': 'url(' + escape(complement[j].portrait) + ')',
 					});
@@ -173,3 +187,16 @@ var drawSearch = function(champArray, complement) {
 		})();*/
 	}
 };
+
+var hideAll = function () {
+	//document.getElementById("content").style.visibility="hidden";
+	$('#content').replaceWith(HOMEPAGE);
+	$('body').css({
+		'background-image': "",
+	});
+}
+
+var showAll = function () {
+	//document.getElementById("content").style.visibility="visible";
+	$('#homepage').replaceWith(CONTENT);
+}

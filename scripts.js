@@ -50,6 +50,7 @@ $(document).ready(function() {
 				document.getElementById('title').innerHTML = matchone[0].title;
 				window.updatePickRateViz(name);
 				window.updateBanRateViz(name);
+				window.updateSynergyAndMatchupViz(name);
 				contents = "";
     		}
     	}

@@ -155,11 +155,24 @@ border: 1px solid transparent;
 }
 
 /* Homepage */
+#headline {
+	margin: 0 auto;
+	font-size: 4em; 
+}
+#description {
+	margin-top: 10px;
+}
 #homepage {
 	height: 500px;
 	width: 900px;
 	margin: 0 auto;
-	background-color: #FFFFFF;
+	margin-top: 40px;
+	text-align: center;
+	-webkit-animation: fadein 1.3s; /* Safari and Chrome */
+	   -moz-animation: fadein 1.3s; /* Firefox */
+	    -ms-animation: fadein 1.3s; /* Internet Explorer */
+	     -o-animation: fadein 1.3s; /* Opera */
+	        animation: fadein 1.3s;
 }
 
 /* Name Block */
@@ -274,3 +287,29 @@ text {
 	float: right;
 }
 
+
+/* Fade Transitions */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Opera */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

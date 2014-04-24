@@ -8,7 +8,7 @@
 
 	 HOMESCREEN
 	 Chord diagram for matchups/synergies popularity
-	 http://projects.flowingdata.com/life-expectancy/
+	 http://projects.flowingdata.com/life-expectancy/ for overall win rates
 	 top 5 / bottom 5 win rates overall
 
 	 PICK/BAN GRAPHS
@@ -42,12 +42,13 @@
 	<body>
 		<div id="searchbar">
 			<div id="toprow">
-			<div id="searchtextcontainer">
-				<div id="searchicon"><img id="mglass" src="searchicon.png"></div>
-				<div id="searchtext">
-					<textarea id="search" rows="1" cols="21"></textarea>
+				<div id="searchtextcontainer">
+					<div id="searchicon"><img id="mglass" src="searchicon.png"></div>
+					<div id="searchtext">
+						<textarea id="search" rows="1" cols="21"></textarea>
+					</div>
+					<div id="home"><img id="house" src="homeicon.png"></div>
 				</div>
-			</div>
 			</div>
 			<div id="bottomrow">
 				<div id="champcontainer"></div>
@@ -71,6 +72,16 @@
 				<div id="matchup-div" class="chart"></div>
 				<div id="synergy-div" class="chart"></div>
 			</div>
+		</div>
+		<div id="homepage">
+			<div id="headline">League of Legends VizWiz</div>
+			<div id="description">Check pick rates, ban rates, matchups and synergies on any of LoL's 118 champions.
+			Featuring a dynamic searchbar, brushable and sortable visualizations, and constantly updating data, League of Legends VizWiz has everything you need to explore different champions' strengths or to pick a champion for a given lineup. </br> </br>
+			Select a champion above to get started.
+			</div>
+			<div id="chord-div"></div>
+			<div id="lines-div"></div>
+			<div id="acknowledgements"></div>
 		</div>
 
 		<!--Include custom JavaScript files-->

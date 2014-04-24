@@ -221,6 +221,10 @@ border: 1px solid transparent;
 	margin: 10px;
 	float: right;
 }
+.graph-title {
+	font-size: 20pt;
+	font-family: "Source Sans Pro", sans-serif;
+}
 
 text {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

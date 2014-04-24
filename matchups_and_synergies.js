@@ -1,7 +1,7 @@
 // matchups and synergies visualization module
 (function() {
 	var margin = {
-		top: 30,
+		top: 70,
 		right: 10,
 		bottom: 10,
 		left: 10
@@ -15,218 +15,241 @@
 	
 	var svg;
 	window.updateSynergyAndMatchupViz = function(name) {
-		var datatest = dataSet[name][0];
-		var matchups = [];
-		var d = datatest['matchups'];
-		Object.keys(datatest['matchups']).forEach(function(key, i){
-			var value = d[key]
-			if (i >= 5) {
-				value = 100 - d[key];
-			}
-			var obj = {name: key, value: value};
-			matchups.push(obj);
-		});
-		matchups = matchups.slice(0,5).concat(matchups.slice(5, 10).reverse());
-
-		var synergies = [];
-		var e = datatest['synergies'];
-		Object.keys(datatest['synergies']).forEach(function(key, i){
-			var value = e[key]
-			if (i >= 5) {
-				value = 100 - e[key];
-			}
-			var obj = {name: key, value: value};
-			synergies.push(obj);
-		});
-		synergies = synergies.slice(0,5).concat(synergies.slice(5, 10).reverse());
-
-		var x = d3.scale.linear()
-			.range([0, width])
-
-		var y = d3.scale.ordinal()
-			.rangeRoundBands([0, height], .2);
-
-		var xAxis = d3.svg.axis()
-			.scale(x)
-			.orient("top")
-			.tickFormat(function(d) { return d + "%"; });
-
-		document.getElementById("matchup-div").innerHTML = "";
-		document.getElementById("synergy-div").innerHTML = "";
-		svg = d3.select("#matchup-div").append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-		x.domain([40,60])
-		y.domain(matchups.map(function (d) {
-			return d.name;
-		}));
-
-		svg.selectAll(".bar")
-			.data(matchups)
-			.enter().append("rect")
-			.attr("fill", function(d, i){
+		var datatest = []
+		var matchups = []
+		var synergies = []
+		d3.json("data/champion_synergies_and_matchups.json", function(error, json) {
+			if (error) return console.warn(error);
+		
+			datatest = json[name][0];
+			var d = datatest['matchups'];
+			Object.keys(datatest['matchups']).forEach(function(key, i){
+				var value = d[key]
 				if (i >= 5) {
-					return "#EE2C2C"
+					value = 100 - d[key];
 				}
-				else return "#9CCB19"
+				var obj = {name: key, value: value};
+				matchups.push(obj);
+			});
+			matchups = matchups.slice(0,5).concat(matchups.slice(5, 10).reverse());
+			console.log(matchups);
+			var e = datatest['synergies'];
+			Object.keys(datatest['synergies']).forEach(function(key, i){
+				var value = e[key]
+				if (i >= 5) {
+					value = 100 - e[key];
+				}
+				var obj = {name: key, value: value};
+				synergies.push(obj);
+			});
+			synergies = synergies.slice(0,5).concat(synergies.slice(5, 10).reverse());
+			// var datatest = dataSet[name][0];
+	
+			var x = d3.scale.linear()
+				.range([0, width])
+
+			var y = d3.scale.ordinal()
+				.rangeRoundBands([0, height], .2);
+
+			var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient("top")
+				.tickFormat(function(d) { return d + "%"; });
+
+			document.getElementById("matchup-div").innerHTML = "";
+			document.getElementById("synergy-div").innerHTML = "";
+			svg = d3.select("#matchup-div").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+			var title1 = "Laning Matchups Win Rate"
+			var title2 = "Laning Synergies Win Rate"
+
+			svg.append("text")
+			.text(title1)
+			.attr("class", "graph-title")
+			.attr("fill", "#DDDDDD")
+			.attr("y", "-40px")
+			.attr("x", "100px");
+
+			x.domain([40,60])
+			y.domain(matchups.map(function (d) {
+				return d.name;
+			}));
+
+			svg.selectAll(".bar")
+				.data(matchups)
+				.enter().append("rect")
+				.attr("fill", function(d, i){
+					if (i >= 5) {
+						return "#EE2C2C"
+					}
+					else return "#9CCB19"
+				})
+				.attr("class", "bar")
+				.attr("x", function (d) {
+					if (x(d.value) - x(50) < 0) {
+						return (x(Math.min(0, d.value)) + (x(d.value) - x(50)));
+					}
+					else {
+						return x(Math.min(0, d.value));
+					}
 			})
-			.attr("class", "bar")
-			.attr("x", function (d) {
-				if (x(d.value) - x(50) < 0) {
-					return (x(Math.min(0, d.value)) + (x(d.value) - x(50)));
-				}
-				else {
-					return x(Math.min(0, d.value));
-				}
-		})
-			.attr("y", function (d) {
-			return y(d.name);
-		})
-			.attr("width", function (d) {
-			return Math.abs(x(d.value) - x(50));
-		})
-			.attr("height", y.rangeBand())
-			.attr("transform", "translate(" + width/0.4 + ", 0)");
-
-		svg.append("g")
-			.attr("class", "x axis")
-			.call(xAxis);
-
-		svg.append("g")
-			.attr("class", "y axis")
-			.attr("transform", "translate(" + width/0.4 + ", 0)")
-			.append("line")
-			.attr("x1", x(0))
-			.attr("x2", x(0))
-			.attr("y2", height);
-
-		svg.selectAll(".text")
-		   .data(matchups)
-		   .enter()
-		   .append("text")
-		   .text(function(d) {
-				var text = d.name + ", " + d.value + "%";
-				return text;
-		   })
-		   .attr("x", function(d, i) {
-				if (i >= 5) {
-					return x(Math.min(0, d.value)) + 12;
-				}
-				else {
-					return x(Math.min(0, d.value)) - 12;
-				}
-		   })
-		   .attr("y", function(d) {
+				.attr("y", function (d) {
 				return y(d.name);
-		   })
-		   .attr("text-anchor", function(d,i){
-				if (i >=5) {
-					return "start";
-				}
-				else {
-					return "end";
-				}
-		   })
-		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")")
-		   .attr("fill", "white");
-
-		function type(d) {
-			d.value = +d.value;
-			return d;
-		}
-
-		var x1 = d3.scale.linear()
-			.range([0, width])
-
-		var y1 = d3.scale.ordinal()
-			.rangeRoundBands([0, height], .2);
-
-		var xAxis1 = d3.svg.axis()
-			.scale(x1)
-			.orient("top")
-			.tickFormat(function(d) { return d + "%"; });
-
-		var svg1 = d3.select("#synergy-div").append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-		x1.domain([40,60])
-		y1.domain(synergies.map(function (d) {
-			return d.name;
-		}));
-
-		svg1.selectAll(".bar")
-			.data(synergies)
-			.enter().append("rect")
-			.attr("fill", function(d, i){
-				if (i >= 5) {
-					return "#EE2C2C"
-				}
-				else return "#9CCB19"
 			})
-			.attr("class", "bar")
-			.attr("x", function (d) {
-				if (x1(d.value) - x1(50) < 0) {
-					return (x1(Math.min(0, d.value)) + (x1(d.value) - x1(50)));
-				}
-				else {
-					return x1(Math.min(0, d.value));
-				}
-		})
-			.attr("y", function (d) {
-			return y1(d.name);
-		})
-			.attr("width", function (d) {
-			return Math.abs(x1(d.value) - x1(50));
-		})
-			.attr("height", y1.rangeBand())
-			.attr("transform", "translate(" + width/0.4 + ", 0)");
+				.attr("width", function (d) {
+				return Math.abs(x(d.value) - x(50));
+			})
+				.attr("height", y.rangeBand())
+				.attr("transform", "translate(" + width/0.4 + ", 0)");
 
-		svg1.append("g")
-			.attr("class", "x axis")
-			.call(xAxis1);
+			svg.append("g")
+				.attr("class", "x axis")
+				.call(xAxis);
 
-		svg1.append("g")
-			.attr("class", "y axis")
-			.attr("transform", "translate(" + width/0.4 + ", 0)")
-			.append("line")
-			.attr("x1", x1(0))
-			.attr("x2", x1(0))
-			.attr("y2", height);
+			svg.append("g")
+				.attr("class", "y axis")
+				.attr("transform", "translate(" + width/0.4 + ", 0)")
+				.append("line")
+				.attr("x1", x(0))
+				.attr("x2", x(0))
+				.attr("y2", height);
 
-		svg1.selectAll(".text")
-		   .data(synergies)
-		   .enter()
-		   .append("text")
-		   .text(function(d) {
-				var text = d.name + ", " + d.value + "%";
-				return text;
-		   })
-		   .attr("x", function(d, i) {
-				if (i >= 5) {
-					return x(Math.min(0, d.value)) + 12;
-				}
-				else {
-					return x(Math.min(0, d.value)) - 12;
-				}
-		   })
-		   .attr("y", function(d) {
+			svg.selectAll(".text")
+			   .data(matchups)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+					var text = d.name + ", " + d.value + "%";
+					return text;
+			   })
+			   .attr("x", function(d, i) {
+					if (i >= 5) {
+						return x(Math.min(0, d.value)) + 12;
+					}
+					else {
+						return x(Math.min(0, d.value)) - 12;
+					}
+			   })
+			   .attr("y", function(d) {
+					return y(d.name);
+			   })
+			   .attr("text-anchor", function(d,i){
+					if (i >=5) {
+						return "start";
+					}
+					else {
+						return "end";
+					}
+			   })
+			   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")")
+			   .attr("fill", "white");
+
+			function type(d) {
+				d.value = +d.value;
+				return d;
+			}
+
+			var x1 = d3.scale.linear()
+				.range([0, width])
+
+			var y1 = d3.scale.ordinal()
+				.rangeRoundBands([0, height], .2);
+
+			var xAxis1 = d3.svg.axis()
+				.scale(x1)
+				.orient("top")
+				.tickFormat(function(d) { return d + "%"; });
+
+			var svg1 = d3.select("#synergy-div").append("svg")
+				.attr("width", width + margin.left + margin.right)
+				.attr("height", height + margin.top + margin.bottom)
+				.append("g")
+				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+			x1.domain([40,60])
+			y1.domain(synergies.map(function (d) {
+				return d.name;
+			}));
+
+			svg1.append("text")
+			.text(title2)
+			.attr("class", "graph-title")
+			.attr("fill", "#DDDDDD")
+			.attr("y", "-40px")
+			.attr("x", "100px");
+
+			svg1.selectAll(".bar")
+				.data(synergies)
+				.enter().append("rect")
+				.attr("fill", function(d, i){
+					if (i >= 5) {
+						return "#EE2C2C"
+					}
+					else return "#9CCB19"
+				})
+				.attr("class", "bar")
+				.attr("x", function (d) {
+					if (x1(d.value) - x1(50) < 0) {
+						return (x1(Math.min(0, d.value)) + (x1(d.value) - x1(50)));
+					}
+					else {
+						return x1(Math.min(0, d.value));
+					}
+			})
+				.attr("y", function (d) {
 				return y1(d.name);
-		   })
-		   .attr("text-anchor", function(d,i){
-				if (i >=5) {
-					return "start";
-				}
-				else {
-					return "end";
-				}
-		   })
-		   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")")
-		   .attr("fill", "white");
+			})
+				.attr("width", function (d) {
+				return Math.abs(x1(d.value) - x1(50));
+			})
+				.attr("height", y1.rangeBand())
+				.attr("transform", "translate(" + width/0.4 + ", 0)");
+
+			svg1.append("g")
+				.attr("class", "x axis")
+				.call(xAxis1);
+
+			svg1.append("g")
+				.attr("class", "y axis")
+				.attr("transform", "translate(" + width/0.4 + ", 0)")
+				.append("line")
+				.attr("x1", x1(0))
+				.attr("x2", x1(0))
+				.attr("y2", height);
+
+			svg1.selectAll(".text")
+			   .data(synergies)
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+					var text = d.name + ", " + d.value + "%";
+					return text;
+			   })
+			   .attr("x", function(d, i) {
+					if (i >= 5) {
+						return x(Math.min(0, d.value)) + 12;
+					}
+					else {
+						return x(Math.min(0, d.value)) - 12;
+					}
+			   })
+			   .attr("y", function(d) {
+					return y1(d.name);
+			   })
+			   .attr("text-anchor", function(d,i){
+					if (i >=5) {
+						return "start";
+					}
+					else {
+						return "end";
+					}
+			   })
+			   .attr("transform", "translate(" + width/0.4 + "," + 25 + ")")
+			   .attr("fill", "white");
+		});
 	}
 })();

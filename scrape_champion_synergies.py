@@ -9,8 +9,10 @@ def getChampionData(championUrl):
     synergies = soup.find('div', {'class': 'heroLostBox heroLost'})
     categories = synergies.findAll('dl')
     obj = []
-    matchups = {}
-    synergies = {}
+    goodmatchups = {}
+    badmatchups = {}
+    goodsynergies = {}
+    badsynergies = {}
     for i in range(len(categories)):
         characters = categories[i].findAll('dd')
         for j in range(len(characters)):
@@ -18,12 +20,19 @@ def getChampionData(championUrl):
             nameurl = characters[j].find('a', href=True)['href']
             nameimage = nameurl[11:] 
             name = nameimage[:-5]
-            if i == 0 or i == 1:
-                matchups[name] = val.contents[0][:5]
-            elif i == 2 or i == 3:
-                synergies[name] = val.contents[0][:5]
-    obj.append(matchups)
-    obj.append(synergies)
+            if i == 0:
+                goodmatchups[name] = val.contents[0][:5]
+            elif i == 1:
+                badmatchups[name] = val.contents[0][:5]
+            elif i == 2:
+                goodsynergies[name] = val.contents[0][:5]
+            elif i == 3:
+                badsynergies[name] = val.contents[0][:5]
+
+    obj.append(goodmatchups)
+    obj.append(badmatchups)
+    obj.append(goodsynergies)
+    obj.append(badsynergies)
 
     # string = html[i1:i2+1]
     # string = fixLazyJsonWithComments(string)
@@ -38,8 +47,10 @@ for name in championUrls:
     data = getChampionData(championUrls[name])
     outData[name] = []
     outData[name].append({
-        'matchups': data[0],
-        'synergies': data[1]
+        'goodmatchups': data[0],
+        'badmatchups': data[1],
+        'goodsynergies': data[2],
+        'badsynergies': data[3]
     })
 inFile.close()
     

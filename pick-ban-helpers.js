@@ -84,8 +84,10 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		// select x tick values to display, since displaying all of them leads to clutter
 		var tickVals = []
 		var xDomain = x.domain();
+		var m = Math.floor(xDomain.length / 15);
+		console.log(m);
 		for (var i = 0; i < xDomain.length; i++) {
-			if (i % 2 == 0) {
+			if (i % m == 0) {
 				tickVals.push(xDomain[i]);
 			}
 		}

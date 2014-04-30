@@ -10,7 +10,7 @@ var generatePointId = function(prefix, date) {
 	return prefix + date.replace(/ /g, "").replace(",", "");
 };
 
-var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionName, correspondingHighlightName, correspondingStopHighlightName, highlightName, stopHighlightName) {
+var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionName, correspondingHighlightNames, correspondingStopHighlightNames, highlightName, stopHighlightName) {
 	var margin = {
 		top: 50,
 		right: 50,
@@ -85,7 +85,6 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		var tickVals = []
 		var xDomain = x.domain();
 		var m = Math.floor(xDomain.length / 15);
-		console.log(m);
 		for (var i = 0; i < xDomain.length; i++) {
 			if (i % m == 0) {
 				tickVals.push(xDomain[i]);
@@ -158,7 +157,9 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 			.attr("x", "-17px")
 			.attr("y", "-50px");
 			
-			window[correspondingHighlightName](d.date);
+			for (i in correspondingHighlightNames) {
+				window[correspondingHighlightNames[i]](d.date);
+			}
 		})
 		.on("mouseout", function(d, i) {
 			d3.select("#tooltip").remove();
@@ -166,7 +167,9 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 			thisPoint
 			.attr("r", 3)
 			.attr("stroke", "none");
-			window[correspondingStopHighlightName]();
+			for (i in correspondingStopHighlightNames) {
+				window[correspondingStopHighlightNames[i]]();
+			}
 		});
 	};
 	

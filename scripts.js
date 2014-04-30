@@ -50,6 +50,7 @@ $(document).ready(function() {
 				var name = matchone[0].name;
 				document.getElementById('name').innerHTML = name;
 				document.getElementById('title').innerHTML = matchone[0].title;
+				window.updateWinRateViz(name);
 				window.updatePickRateViz(name);
 				window.updateBanRateViz(name);
 				window.updateSynergyAndMatchupViz(name);
@@ -150,6 +151,7 @@ var drawSearch = function(champArray, complement) {
 					var name = complement[j].name;
 					document.getElementById('name').innerHTML = name;
 					document.getElementById('title').innerHTML = complement[j].title;
+					window.updateWinRateViz(name);
 					window.updatePickRateViz(name);
 					window.updateBanRateViz(name);
 					window.updateSynergyAndMatchupViz(name);
@@ -205,6 +207,7 @@ var drawSearch = function(champArray, complement) {
 				var name = champArray[j].name;
 				document.getElementById('name').innerHTML = name;
 				document.getElementById('title').innerHTML = champArray[j].title;
+				window.updateWinRateViz(name);
 				window.updatePickRateViz(name);
 				window.updateBanRateViz(name);
 				window.updateSynergyAndMatchupViz(name);

@@ -169,7 +169,8 @@ var drawSearch = function(champArray, complement) {
    			'font-size': '12px',
    			width: '88px',
    			height: '100%',
-   			display: 'inline-block'
+   			display: 'inline-block',
+			cursor: 'pointer'
 		});
 		// append to document
 		$(imgnail).append(img);

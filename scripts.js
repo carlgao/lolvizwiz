@@ -8,8 +8,10 @@
 
 CONTENT = $('#content');
 HOMEPAGE = $('#homepage');
+TAG = "all";
 
 $(document).ready(function() {
+	var contents = "";
 	$('#content').replaceWith(HOMEPAGE);
     drawSearch(CHAMPS, []);
     $('#search').keydown(function(e) {
@@ -20,7 +22,7 @@ $(document).ready(function() {
     	}
     });
     $('#search').keyup(function(e) {
-    	var contents = "";
+    	contents = "";
     	if (e.which != 13)
     	{
     		contents = $('#search').val();
@@ -62,6 +64,14 @@ $(document).ready(function() {
 		var results = processArray("");
 		drawSearch(results[0], results[1]);
 	});
+
+	$('.tag').on('click', function() {
+		$('.curr').removeClass('curr');
+		$(this).addClass('curr');
+		TAG = $(this).attr('id');
+		var results = processArray(contents);
+		drawSearch(results[0], results[1]);
+	});
 });
 
 // filter champ array to only keep what matches search query
@@ -70,9 +80,15 @@ var processArray = function(contents) {
 	var complement = [];
 	for (var i = 0; i < CHAMPS.length; i++)
 	{
+		matchesTag = false;
+		for (var role = 0; role < CHAMPS[i].roles.length; role++)
+		{
+			if (CHAMPS[i].roles[role] == TAG)
+				matchesTag = true;
+		}
 		var curchamp = CHAMPS[i].id;
 		curchamp = curchamp.substring(0, contents.length);
-		if (contents == curchamp)
+		if (contents == curchamp && (matchesTag || TAG == "all"))
 		{
 			filtered.push(CHAMPS[i]);
 		}
@@ -157,7 +173,8 @@ var drawSearch = function(champArray, complement) {
 			'margin-top': '18px',
 			'-webkit-border-radius': '6px',
 			'-moz-border-radius': '6px',
-			'border-radius': '6px'
+			'border-radius': '6px', 
+			cursor: 'pointer'
 		});
 		$(text).css({
 			width: '100%',
@@ -169,8 +186,7 @@ var drawSearch = function(champArray, complement) {
    			'font-size': '12px',
    			width: '88px',
    			height: '100%',
-   			display: 'inline-block',
-			cursor: 'pointer'
+   			display: 'inline-block'
 		});
 		// append to document
 		$(imgnail).append(img);

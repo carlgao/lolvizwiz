@@ -74,16 +74,15 @@ body {
 	border-radius: 5px;*/
 }
 #home {
-	width: 39px;
-	height: 35px;
+	width: 40px;
 	position: absolute;
 	margin-left: 203px;
-	cursor: pointer;
 }
 #house {
 	margin-top: 2px;
 	max-width: 60%;
 	opacity: 0.8;
+	cursor: pointer;
 }
 #house:hover {
 	opacity: 1;
@@ -143,6 +142,35 @@ height: 50px;
 background-color: rgba(255,255,255,0.1);
 border: 1px solid transparent;
 -webkit-border-radius: 6px;
+}
+
+/* Tags */
+#tags {
+	font-size: 11px;
+	margin-right: 20px;
+	margin-top: 1px;
+	float: right;
+}
+.tag {
+	width: 30px;
+	text-align: center;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	opacity: 0.85;
+	display: inline-block;
+	padding-left: 1px;
+	padding-right: 1px;
+	margin: 2px;
+	cursor: pointer;
+}
+.tag:hover{
+	opacity: 1;
+}
+.curr{
+	opacity: 1;
+	background-color: #DDDDDD;
+	color: #111111;
+	font-weight: bold;
 }
 
 /* Body */

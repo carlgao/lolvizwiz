@@ -78,6 +78,7 @@ body {
 	height: 35px;
 	position: absolute;
 	margin-left: 203px;
+	cursor: pointer;
 }
 #house {
 	margin-top: 2px;

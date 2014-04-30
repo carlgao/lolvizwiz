@@ -69,8 +69,13 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		
 		// update domains
 		x.domain(championData.map(function(d) { return d.date; }));
-		yMax = 0.01 + d3.max(championData, function(d) { return d.percent; });
-		y.domain([0, yMax]);
+		var yMin = 0;
+		var yMax = 0.01 + d3.max(championData, function(d) { return d.percent; });
+		if (prefix == "win") {
+			yMin = 0.4;
+			yMax = 0.6;
+		}
+		y.domain([yMin, yMax]);
 		
 		// draw x axis
 		xAxisG = g.append("g")

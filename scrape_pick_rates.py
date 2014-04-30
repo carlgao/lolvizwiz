@@ -5,6 +5,7 @@ import re
 import tokenize
 import token
 import StringIO
+from datetime import datetime
 
 # Function from http://stackoverflow.com/questions/4033633/handling-lazy-json-in-python-expecting-property-name
 def fixLazyJsonWithComments(in_text):
@@ -75,14 +76,21 @@ def getChampionData(championUrl):
 inFile = open('data/champion_urls.p', 'rb')
 championUrls = pickle.load(inFile)
 
-outData = {}
+with open('data/pick_rates.json') as oldJsonFile:
+    outData = json.loads(oldJsonFile.read())
+    mostRecentDate = outData['Jax'][-1]['date']
 for name in championUrls:
     data = getChampionData(championUrls[name])
-    outData[name] = []
+    # Uncomment if creating new data file from scratch
+    # outData[name] = []
+    startUpdating = False
     for i in range(len(data['xLabel'])):
+        if not startUpdating:
+            if data['xLabel'][i] == mostRecentDate:
+                startUpdating = True
+            continue
         outData[name].append({
             'date': data['xLabel'][i],
-            'total': data['total'][i],
             'picked': data['picked'][i],
             'percent': data['data'][i]
         })
@@ -91,3 +99,4 @@ inFile.close()
 outFile = open('data/pick_rates.json', 'w')
 outFile.write(json.dumps(outData))
 outFile.close()
+

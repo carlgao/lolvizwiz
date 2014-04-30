@@ -125,6 +125,7 @@ var drawSearch = function(champArray, complement) {
 					var name = champArray[j].name;
 					document.getElementById('name').innerHTML = name;
 					document.getElementById('title').innerHTML = champArray[j].title;
+					window.updateWinRateViz(name);
 					window.updatePickRateViz(name);
 					window.updateBanRateViz(name);
 					window.updateSynergyAndMatchupViz(name);

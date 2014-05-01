@@ -10,7 +10,7 @@ var generatePointId = function(prefix, date) {
 	return prefix + date.replace(/ /g, "").replace(",", "");
 };
 
-var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionName, correspondingHighlightNames, correspondingStopHighlightNames, highlightName, stopHighlightName) {
+var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionName, correspondingHighlightNames, correspondingStopHighlightNames, highlightName, stopHighlightName, brushFunctionName) {
 	var margin = {
 		top: 50,
 		right: 40,
@@ -70,6 +70,12 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		
 		// update domains
 		x.domain(championData.map(function(d) { return d.date; }));
+		window.chartXs.push(x);
+		window.lineChartsLoadedCount++;
+		if (window.lineChartsLoadedCount == 3) {
+			window.initTimeSelect();
+			window.lineChartsLoadedCount = 0;
+		}
 		var yMin = 0;
 		var yMax = 0.01 + d3.max(championData, function(d) { return d.percent; });
 		yMax = Math.ceil(yMax * 100) / 100;
@@ -133,6 +139,7 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		.data(championData)
 		.enter().append("circle")
 		.attr("id", function(d) { return generatePointId(prefix, d.date); })
+		.attr("class", "point")
 		.attr("fill-opacity", 0.8)
 		.attr("fill", "steelblue")
 		.attr("r", 3)
@@ -179,6 +186,94 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 				window[correspondingStopHighlightNames[i]]();
 			}
 		});
+		window[brushFunctionName] = function() {
+			var newDomain = x.domain();
+			console.log(newDomain);
+
+			var newData = championData.filter(function(d) { return newDomain.indexOf(d.date) > -1; });
+			console.log(newData);
+			if (newData.length > 0) {
+				svg.append("defs").append("clipPath")
+				.attr("id", "clip")
+				.append("rect")
+				.attr("width", width)
+				.attr("height", height);
+
+				var tickVals = []
+				var m = Math.floor(newDomain.length / 15);
+				if (m == 0) m = 1;
+				for (var i = 0; i < newDomain.length; i++) {
+					if (i % m == 0) {
+						tickVals.push(newDomain[i]);
+					}
+				}
+
+				g.select(".x.axis").call(xAxis.tickValues(tickVals))
+				.selectAll("text")
+				.style("text-anchor", "end")
+				.attr("dx", "-.8em")
+				.attr("dy", ".15em")
+				.attr("transform", function(d) {
+					return "rotate(-65)" 
+				});
+
+				// draw line
+				g.selectAll(".line")
+				.attr("d", function() { return lineFunction(newData)});
+
+				// draw points
+				g
+				.selectAll(".point")
+				.attr("id", function(d) { return generatePointId(prefix, d.date); })
+				.attr("fill-opacity", 0.8)
+				.attr("fill", "steelblue")
+				.attr("r", 3)
+				.attr("cx", function(d) { var cx = x(d.date); return cx == undefined ? -50 : cx; })
+				.attr("cy", function(d) { return y(d.percent); })
+				.on("mouseover", function(d, i) {
+					var thisPoint = d3.select(this);
+					thisPoint
+					.attr("r", 5)
+					.attr("stroke", "white");
+
+					d3.select("#tooltip").remove();
+					var tooltip = svg.append("g")
+					.attr("id", "tooltip")
+					.attr("transform", "translate(" + (thisPoint.attr("cx")) + "," + (parseInt(thisPoint.attr("cy")) + 30) + ")");
+					tooltip
+					.append("svg:rect")
+					.attr("width", function() { return (d.percent >= 0.1) ? "57px" : "50px"; })
+					.attr("height", "30px")
+					.attr("x", "-25px")
+					.attr("y", "-70px")
+					.attr("rx", "5px")
+					.attr("ry", "5px")
+					.style("fill", "black")
+					.style("fill-opacity", 0.5);
+					tooltip
+					.append("text")
+					.text(d3.format(".2%")(d.percent))
+					.attr("fill", "#DDDDDD")
+					.attr("x", "-17px")
+					.attr("y", "-50px");
+
+					for (i in correspondingHighlightNames) {
+						window[correspondingHighlightNames[i]](d.date);
+					}
+				})
+				.on("mouseout", function(d, i) {
+					d3.select("#tooltip").remove();
+					var thisPoint = d3.select(this);
+					thisPoint
+					.attr("r", 3)
+					.attr("stroke", "none");
+					for (i in correspondingStopHighlightNames) {
+						window[correspondingStopHighlightNames[i]]();
+					}
+				});
+
+			}
+		};
 	};
 	
 	var correspondingPoint;

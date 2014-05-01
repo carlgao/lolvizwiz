@@ -300,6 +300,12 @@ border: 1px solid transparent;
 	padding: 10px;
 	margin: 10px;
 }
+#time-select-div {
+	width: 550px;
+	padding: 10px;
+	margin: 10px;
+	margin-left: 25px;
+}
 #pick-div {
 	width: 550px;
 	padding: 10px;

@@ -1,4 +1,4 @@
-CREATING_NEW_DATA_FILE = True
+CREATING_NEW_DATA_FILE = False
 
 import requests
 import pickle

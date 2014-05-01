@@ -188,10 +188,8 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		});
 		window[brushFunctionName] = function() {
 			var newDomain = x.domain();
-			console.log(newDomain);
 
 			var newData = championData.filter(function(d) { return newDomain.indexOf(d.date) > -1; });
-			console.log(newData);
 			if (newData.length > 0) {
 				svg.append("defs").append("clipPath")
 				.attr("id", "clip")

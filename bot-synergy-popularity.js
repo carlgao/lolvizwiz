@@ -1,5 +1,13 @@
 d3.json("data/bot_lane_synergy_popularity.json", function(json) {
-	var matrix = json["adc"].map(function(dict) { return dict["dataColor"]; });
+	var matrix = json["adc"].map(function(dict, i) { return dict["dataColor"]; });
+
+	/*var matrix = [
+	  [11975,  5871, 8916, 2868, 2000],
+	  [ 1951, 10048, 2060, 6171, 3000],
+	  [ 8010, 16145, 8090, 8045, 4000],
+	  [ 1013,   990,  940, 6907, 5000]
+	];*/
+	console.log(matrix);
 	var chord = d3.layout.chord()
 	.padding(.05)
 	.sortSubgroups(d3.descending)
@@ -11,8 +19,8 @@ d3.json("data/bot_lane_synergy_popularity.json", function(json) {
     outerRadius = innerRadius * 1.1;
 
 	var fill = d3.scale.ordinal()
-    .domain(d3.range(4))
-    .range(["#000000", "#FFDD89", "#957244", "#F26223"]);
+    .domain(d3.range(12))
+    .range(["#000000", "#FFDD89", "#957244", "#F26223", "#000000", "#FFDD89", "#957244", "#F26223", "#000000", "#FFDD89", "#957244", "#F26223"]);
 	
 	var svg = d3.select("#chord-div").append("svg")
 	.attr("width", width)

@@ -32,11 +32,9 @@
 				var obj = {name: key, value: num.toString()};
 				matchups.push(obj);
 			});
-			// var m_percent = matchups.sort(function(a, b) {return d3.descending(a["value"], b["value"]);});
-			matchups.sort(function(a, b) {return d3.ascending(a["name"], b["name"]);});
-			var m_a_to_z = 0;
-			// console.log(m_percent);
-			// console.log(m_a_to_z);	
+			
+			matchups.sort(function(a, b) {return d3.descending(a["value"], b["value"]);});
+			var m_a_to_z = 1;
 
 			var f = datatest['goodsynergies'];
 			var g = datatest['badsynergies'];
@@ -52,8 +50,8 @@
 				synergies.push(obj);
 			});
 
-			synergies.sort(function(a, b) {return d3.ascending(a["name"], b["name"]);});	
-			var s_a_to_z = 0;
+			synergies.sort(function(a, b) {return d3.descending(a["value"], b["value"]);});	
+			var s_a_to_z = 1;
 
 			var x = d3.scale.linear()
 				.range([0, width])
@@ -176,7 +174,6 @@
 			   })
 			   .attr("x", function(d, i) {
 			   		var num = parseFloat(d['value'])
-			   		console.log(num)
 					if (num < 50) {
 						return x(Math.min(0, d['value'])) + 12;
 					}
@@ -209,10 +206,12 @@
 				.attr("y2", height);   
 
 			var toggle = svg.append("g")
+							.attr("class", "toggle")
 							.attr("x", -2)
 		        			.attr("y", -46)
 		    
 		    toggle.append("text")
+		    	.attr("class", "toggle")
 		    	.attr("y", -46)
 		        .style("fill", "white")
 		        .style("font-family", "Source Sans Pro")
@@ -330,11 +329,13 @@
 				.attr("y2", height);
 
 			var toggle1 = svg1.append("g")
+				.attr("class", "toggle")
 				.attr("x", -2)
     			.attr("y", -46);
 
 			toggle1.append("text")
 		    	.attr("y", -46)
+		    	.attr("class", "toggle")
 		        .style("fill", "white")
 		        .style("font-family", "Source Sans Pro")
 		        .text("A-Z / Percent");

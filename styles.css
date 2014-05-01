@@ -317,6 +317,10 @@ border: 1px solid transparent;
 	font-family: "Source Sans Pro", sans-serif;
 }
 
+.toggle {
+	cursor: pointer
+}
+
 text {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 9pt;

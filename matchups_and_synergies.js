@@ -250,6 +250,13 @@
 				.append("g")
 				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+			svg1.append("text")
+			.text(title2)
+			.attr("class", "graph-title")
+			.attr("fill", "#DDDDDD")
+			.attr("y", "-40px")
+			.attr("x", "80px");
+
 			x1.domain([40,60])
 			y1.domain(synergies.map(function (d) {
 				return d.name;

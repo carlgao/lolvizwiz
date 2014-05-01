@@ -74,8 +74,7 @@ body {
 	border-radius: 5px;*/
 }
 #home {
-	width: 39px;
-	height: 35px;
+	width: 40px;
 	position: absolute;
 	margin-left: 203px;
 }
@@ -83,6 +82,7 @@ body {
 	margin-top: 2px;
 	max-width: 60%;
 	opacity: 0.8;
+	cursor: pointer;
 }
 #house:hover {
 	opacity: 1;
@@ -144,6 +144,35 @@ border: 1px solid transparent;
 -webkit-border-radius: 6px;
 }
 
+/* Tags */
+#tags {
+	font-size: 11px;
+	margin-right: 20px;
+	margin-top: 1px;
+	float: right;
+}
+.tag {
+	width: 30px;
+	text-align: center;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	opacity: 0.85;
+	display: inline-block;
+	padding-left: 1px;
+	padding-right: 1px;
+	margin: 2px;
+	cursor: pointer;
+}
+.tag:hover{
+	opacity: 1;
+}
+.curr{
+	opacity: 1;
+	background-color: #DDDDDD;
+	color: #111111;
+	font-weight: bold;
+}
+
 /* Body */
 #searchbarholder {
 	height: 134px;
@@ -202,12 +231,24 @@ border: 1px solid transparent;
 }
 
 /* Linecharts */
+#winchart {
+	margin: auto;
+	padding: 0px;
+	height: 230px;
+	width: 1200px;
+	margin-top: 30px;
+}
 #linecharts {
 	margin: auto;
 	padding: 0px;
 	height: 400px;
 	width: 1200px;
 	margin-top: 30px;
+}
+#win-div {
+	width: 550px;
+	padding: 10px;
+	margin: 10px;
 }
 #pick-div {
 	width: 550px;

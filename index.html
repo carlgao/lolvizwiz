@@ -10,7 +10,6 @@
 	 Chord diagram for matchups/synergies popularity
 	 http://projects.flowingdata.com/life-expectancy/ for overall win rates
 	 top 5 / bottom 5 win rates overall
-	 Bold champ names when mouseover-ing image, and change cursor to pointer
 
 	 PICK/BAN GRAPHS
 	 add brushing over time (re-scrape and update data each day)
@@ -22,8 +21,6 @@
 	 make sortable by champ and by greatest to least
 
 	 MISCELLANEOUS
-	 filter by role
-	 add winrate chart (leave right part blank to show bg champ face)
 	 compare two champs (win rate overall/win rate against a particular champion) <- don't remember what this means
 -->
 
@@ -42,6 +39,14 @@
 	<body>
 		<div id="searchbar">
 			<div id="toprow">
+				<div id="tags">
+					<div id="all" class="tag curr">ALL</div>
+					<div id="top" class="tag">TOP</div>
+					<div id="mid" class="tag">MID</div>
+					<div id="bottom" class="tag">ADC</div>
+					<div id="support" class="tag">SUPP</div>
+					<div id="jungle" class="tag">JUNG</div>
+				</div>
 				<div id="searchtextcontainer">
 					<div id="searchicon"><img id="mglass" src="searchicon.png"></div>
 					<div id="searchtext">
@@ -63,6 +68,9 @@
 
 			<div id="wins"></div>
 
+			<div id="winchart">
+				<div id="win-div" class="chart"></div>
+			</div>
 			<div id="linecharts">
 				<div id="pick-div" class="chart"></div>
 				<div id="ban-div" class="chart"></div>
@@ -88,6 +96,7 @@
 		<script type="text/javascript" src="scripts.js"></script>
 		<script type="text/javascript" src="champs.js"></script>
 		<script type="text/javascript" src="pick-ban-helpers.js"></script>
+		<script type="text/javascript" src="win-viz.js"></script>
 		<script type="text/javascript" src="pick-viz.js"></script>
 		<script type="text/javascript" src="ban-viz.js"></script>
 		<script type="text/javascript" src="matchups_and_synergies.js"></script>

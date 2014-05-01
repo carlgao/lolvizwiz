@@ -10,16 +10,16 @@ var generatePointId = function(prefix, date) {
 	return prefix + date.replace(/ /g, "").replace(",", "");
 };
 
-var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionName, correspondingHighlightName, correspondingStopHighlightName, highlightName, stopHighlightName) {
+var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionName, correspondingHighlightNames, correspondingStopHighlightNames, highlightName, stopHighlightName) {
 	var margin = {
 		top: 50,
-		right: 50,
-		bottom: 100,
-		left: 50
+		right: 40,
+		bottom: 50,
+		left: 40
 	};
 	
 	var width = 550 - margin.left - margin.right;
-	var height = 300 - margin.bottom - margin.top;
+	var height = 200 - margin.bottom - margin.top;
 	var x = d3.scale.ordinal().rangeBands([0, width]);
 	var y = d3.scale.linear().range([height, 0]);
 
@@ -53,6 +53,7 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		for (champion in dataSet) {
 			for (var i = 0; i < dataSet[champion].length; i++) {
 				dataSet[champion][i].percent /= 100;
+				dataSet[champion][i].date = dataSet[champion][i].date.substring(0, 6);
 			}
 		}
 	});
@@ -69,8 +70,14 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		
 		// update domains
 		x.domain(championData.map(function(d) { return d.date; }));
-		yMax = 0.01 + d3.max(championData, function(d) { return d.percent; });
-		y.domain([0, yMax]);
+		var yMin = 0;
+		var yMax = 0.01 + d3.max(championData, function(d) { return d.percent; });
+		yMax = Math.ceil(yMax * 100) / 100;
+		if (prefix == "win") {
+			yMin = 0.4;
+			yMax = 0.65;
+		}
+		y.domain([yMin, yMax]);
 		
 		// draw x axis
 		xAxisG = g.append("g")
@@ -85,7 +92,6 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		var tickVals = []
 		var xDomain = x.domain();
 		var m = Math.floor(xDomain.length / 15);
-		console.log(m);
 		for (var i = 0; i < xDomain.length; i++) {
 			if (i % m == 0) {
 				tickVals.push(xDomain[i]);
@@ -107,10 +113,11 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		});
 		
 		// update y axis
+		var maxTicks = 5;
 		var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left")
-		.ticks(Math.min(yMax*100, 10))
+		.ticks(Math.min(Math.ceil(yMax*100+1), maxTicks))
 		.tickFormat(d3.format("%"));
 		yAxisG.call(yAxis);
 		 	
@@ -158,7 +165,9 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 			.attr("x", "-17px")
 			.attr("y", "-50px");
 			
-			window[correspondingHighlightName](d.date);
+			for (i in correspondingHighlightNames) {
+				window[correspondingHighlightNames[i]](d.date);
+			}
 		})
 		.on("mouseout", function(d, i) {
 			d3.select("#tooltip").remove();
@@ -166,7 +175,9 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 			thisPoint
 			.attr("r", 3)
 			.attr("stroke", "none");
-			window[correspondingStopHighlightName]();
+			for (i in correspondingStopHighlightNames) {
+				window[correspondingStopHighlightNames[i]]();
+			}
 		});
 	};
 	
@@ -182,9 +193,8 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		.attr("r", 5)
 		.attr("stroke", "white");
 		
-		d3.select("#tooltip2").remove();
 		var tooltip2 = svg.append("g")
-		.attr("id", "tooltip2")
+		.attr("class", "tooltip2")
 		.attr("transform", "translate(" + (correspondingPoint.attr("cx")) + "," + (parseInt(correspondingPoint.attr("cy")) + 30) + ")");
 		tooltip2
 		.append("svg:rect")
@@ -204,7 +214,7 @@ var pickAndBanVizTemplate = function(title, prefix, dataSource, updateFunctionNa
 		.attr("y", "-50px");
 	};
 	window[stopHighlightName] = function() {
-		d3.select("#tooltip2").remove();
+		d3.select(".tooltip2").remove();
 		correspondingPoint
 		.attr("r", 3)
 		.attr("stroke", "none");

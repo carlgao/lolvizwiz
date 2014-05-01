@@ -203,6 +203,12 @@ border: 1px solid transparent;
 	     -o-animation: fadein 1.3s; /* Opera */
 	        animation: fadein 1.3s;
 }
+#acknowledgements {
+	font-size: 14px;
+	margin-top: 400px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
 
 /* Name Block */
 #nameblock {
@@ -241,7 +247,7 @@ border: 1px solid transparent;
 #linecharts {
 	margin: auto;
 	padding: 0px;
-	height: 400px;
+	height: 260px;
 	width: 1200px;
 	margin-top: 30px;
 }

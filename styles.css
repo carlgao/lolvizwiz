@@ -237,17 +237,10 @@ border: 1px solid transparent;
 }
 
 /* Linecharts */
-#winchart {
+.linecharts {
 	margin: auto;
 	padding: 0px;
 	height: 230px;
-	width: 1200px;
-	margin-top: 30px;
-}
-#linecharts {
-	margin: auto;
-	padding: 0px;
-	height: 260px;
 	width: 1200px;
 	margin-top: 30px;
 }
@@ -323,6 +316,7 @@ text {
 	padding: 0px;
 	height: 500px;
 	width: 1200px;
+	margin-top: 30px;
 	margin-bottom: 100px;
 }
 #matchup-div {

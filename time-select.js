@@ -101,4 +101,7 @@ window.initTimeSelect = function() {
 	.attr("class", "graph-title")
 	.attr("fill", "#DDDDDD")
 	.attr("y", "-25px");
+	
+	svg.select(".brush .background")
+	.style("visibility", "visible");
 };

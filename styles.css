@@ -210,6 +210,57 @@ border: 1px solid transparent;
 	overflow: hidden;
 }
 
+/* Top 5, Bot 5 */
+#top10-div {
+	text-align: left;
+}
+.fivechart div {
+  font: 10px sans-serif;
+  background-color: #DDDDDD;
+  padding: 8px;
+  margin: 8px;
+  color: #111111;
+  font-size: 14px;
+}
+#top5 {
+	display: inline-block;
+}
+#bot5 {
+	display: inline-block;
+	float: right;
+}
+#top5 div {
+	text-align: right;
+}
+#bot5 div {
+	text-align: left;
+}
+#toppic {
+	width: 51px;
+	display: inline-block;
+	float: left;
+}
+#toppic img {
+	max-width: 100%;
+	cursor: pointer;
+}
+#toppic div {
+	padding: 4px;
+}
+#botpic {
+	width: 51px;
+	display: inline-block;
+	float: right;
+}
+#botpic img {
+	max-width: 100%;
+	cursor: pointer;
+}
+#botpic div {
+	padding: 4px;
+}
+#t {}
+
 /* Name Block */
 #nameblock {
 	height: 100px;
@@ -237,17 +288,10 @@ border: 1px solid transparent;
 }
 
 /* Linecharts */
-#winchart {
+.linecharts {
 	margin: auto;
 	padding: 0px;
 	height: 230px;
-	width: 1200px;
-	margin-top: 30px;
-}
-#linecharts {
-	margin: auto;
-	padding: 0px;
-	height: 260px;
 	width: 1200px;
 	margin-top: 30px;
 }
@@ -323,6 +367,7 @@ text {
 	padding: 0px;
 	height: 500px;
 	width: 1200px;
+	margin-top: 30px;
 	margin-bottom: 100px;
 }
 #matchup-div {

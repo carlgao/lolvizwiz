@@ -3,13 +3,6 @@
   CS171 Final Project, May 2014
   Authors: Shannon Zhu, Carl Gao, Jesse Chen
 -->
-
-<!-- TO DO LIST
-	Carl: Chord Diagram, Website, Make selector less transparent
-	Shannon: Homepage bar charts, Process Book
-	Jesse: Screencast
--->
-
 <html>
 	<head>
 		<!--Include CSS and Font files-->
@@ -93,8 +86,18 @@
 				<div id="bot5" class="fivechart"></div>
 				<div id="botpic"></div>
 			</div>
+			<br />
+			<br />
+			<div id="summ">It's difficult to summarize everything all of our visualizations can show you, but some of the tidbits that stand out are:
+			<ul>
+				<li>Kayle, Warwick, and Fiora win at abnormally high rates.</li>
+				<li>Caitlyn and Lucian are the most popular ADCs, while Thresh and Leona are the most popular supports.</li>
+				<li>Even though Caitlyn and Thresh are the most popular of their respective roles and are very often played together, each is actually not even in the other's top 5 best partners.</li>
+				<li>Before the most recent patch, Kassadin was so overpowered that he was banned in 91% of games, but now he's no longer a threat.</li>
+			</ul>
 			<div id="acknowledgements">We would like to thank LoLdb and LolKing for allowing us to use their data in the construction of this project. All art is copyright Riot Games.</div>
 			<div id="data-link">Our data can be accessed <a href="/data">here</a>.</div>
+</div>
 		</div>
 
 		<!--Include custom JavaScript files-->

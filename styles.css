@@ -210,6 +210,12 @@ border: 1px solid transparent;
 	overflow: hidden;
 }
 
+/* Chord diagram */
+#chord-div {
+	margin-top: 50px;
+	width: 960px;
+}
+
 /* Top 5, Bot 5 */
 #top10-div {
 	margin: 0;

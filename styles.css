@@ -237,10 +237,12 @@ border: 1px solid transparent;
 	width: 35%;
 }
 #top5 div {
+	background: rgb(156, 203, 25);
 	text-align: right;
 	float: left;
 }
 #bot5 div {
+	background: rgb(238, 44, 44);
 	text-align: left;
 	float: right;
 }

@@ -84,8 +84,8 @@
 				Supports &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ADCs
 			</div>
 			<div id="topheaders">
-				<div id="t">Top 5 Wins</div>
-				<div id="b">Bottom 5 Wins</div>
+				<div id="t">Top 5 Win Rates</div>
+				<div id="b">Bottom 5 Win Rates</div>
 			</div>
 			<div id="top10-div">
 				<div id="toppic"></div>

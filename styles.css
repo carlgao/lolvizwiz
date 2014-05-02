@@ -31,6 +31,9 @@ body {
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
+a {
+	color: steelblue;
+}
 .chart {
 	background-color: rgba(17, 17, 17, 0.65);
 	width: auto;
@@ -206,6 +209,10 @@ border: 1px solid transparent;
 #acknowledgements {
 	font-size: 14px;
 	margin-top: 100px;
+	overflow: hidden;
+}
+#data-link {
+	font-size: 14px;
 	margin-bottom: 15px;
 	overflow: hidden;
 }

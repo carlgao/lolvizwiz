@@ -94,6 +94,7 @@
 				<div id="botpic"></div>
 			</div>
 			<div id="acknowledgements">We would like to thank LoLdb and LolKing for allowing us to use their data in the construction of this project. All art is copyright Riot Games.</div>
+			<div id="data-link">Our data can be accessed <a href="/data">here</a>.</div>
 		</div>
 
 		<!--Include custom JavaScript files-->

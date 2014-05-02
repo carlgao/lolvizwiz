@@ -96,7 +96,7 @@
 				<li>Before the most recent patch, Kassadin was so overpowered that he was banned in 91% of games, but now he's no longer a threat.</li>
 			</ul>
 			<div id="acknowledgements">We would like to thank LoLdb and LolKing for allowing us to use their data in the construction of this project. All art is copyright Riot Games.</div>
-			<div id="data-link">Our data can be accessed <a href="/data">here</a>.</div>
+			<div id="data-link"><a href="/data">Our Data</a> | <a href="/ProcessBook.pdf">Our Process Book</a> | <a href="https://www.youtube.com/watch?v=gLZG-Y3h-Vc">Our Screencast</a>.</div>
 </div>
 		</div>
 

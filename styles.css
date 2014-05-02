@@ -347,22 +347,17 @@ text {
 	font: 10px sans-serif;
 }
 
-.station{
-	fill:lightgrey;
-	opacity: .7;
-}
-.station.hasData{
-	fill:blue;
-	opacity: 1;
-}
 .hourLine{
 	fill:none;
 	stroke:steelblue;
 
 }
-.brush .extent{
-	fill:gray;
-	opacity: .3;
+.brush .background {
+	fill: rgba(255, 255, 255, 0.2);
+}
+.brush .extent {
+	fill: steelblue;
+	opacity: .9;
 }
 
 .axis path,
